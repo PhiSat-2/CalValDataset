@@ -1,0 +1,64 @@
+{
+  "entries": [
+    {
+      "category": "image_quality",
+      "location": "BOAT",
+      "session": "Session1",
+      "bands": {
+        "b_0": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_0.tiff",
+        "b_1": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_1.tiff",
+        "b_2": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_2.tiff",
+        "b_3": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_3.tiff",
+        "b_4": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_4.tiff",
+        "b_5": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_5.tiff",
+        "b_6": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_6.tiff",
+        "b_7": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2270,
+          "y_min": 1840,
+          "x_max": 2370,
+          "y_max": 1940,
+          "label": "Boatou"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "40.84°\"N 109.46°\"E",
+        "session_id": "PHISAT-2_L1_000001340_20241007034054_20241007034103_E04D392C"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BOAT",
+      "session": "Session2",
+      "bands": {
+        "b_0": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_0.tiff",
+        "b_1": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_1.tiff",
+        "b_2": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_2.tiff",
+        "b_3": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_3.tiff",
+        "b_4": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_4.tiff",
+        "b_5": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_5.tiff",
+        "b_6": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_6.tiff",
+        "b_7": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 1650,
+          "y_min": 750,
+          "x_max": 1750,
+          "y_max": 850,
+          "label": "boatou"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "40.84°\"N 109.46°\"E",
+        "session_id": "PHISAT-2_L1_000001553_20241231034302_20241231034308_8E698850"
+      }
+    }
+  ]
+}

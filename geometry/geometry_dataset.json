@@ -1,0 +1,154 @@
+{
+  "entries": [
+    {
+      "category": "geometry",
+      "location": "PRING",
+      "session": "Session1",
+      "bands": {
+        "b_0": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_0.tiff",
+        "b_1": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_1.tiff",
+        "b_2": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_2.tiff",
+        "b_3": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_3.tiff",
+        "b_4": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_4.tiff",
+        "b_5": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_5.tiff",
+        "b_6": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_6.tiff",
+        "b_7": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2100,
+          "y_min": 6700,
+          "x_max": 2200,
+          "y_max": 6800,
+          "label": "Pueblo Range, Colorado, USA"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "38°16'48.0\"N 104°36'36.0\"W",
+        "session_id": "PHISAT-2_L1_000001406_20241023181027_20241023181033_EAE9394D" 
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "PRING",
+      "session": "Session2",
+      "bands": {
+        "b_0": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_0.tiff",
+        "b_1": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_1.tiff",
+        "b_2": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_2.tiff",
+        "b_3": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_3.tiff",
+        "b_4": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_4.tiff",
+        "b_5": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_5.tiff",
+        "b_6": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_6.tiff",
+        "b_7": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 1950,
+          "y_min": 3200,
+          "x_max": 2050,
+          "y_max": 3300,
+          "label": "Pueblo Range, Colorado, USA"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "38°16'48.0\"N 104°36'36.0\"W",
+        "session_id": "PHISAT-2_L1_000002138_20250427180007_20250427180014_5AA732E7" 
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "PRING",
+      "session": "Session3",
+      "bands": {
+        "b_0": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_0.tiff",
+        "b_1": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_1.tiff",
+        "b_2": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_2.tiff",
+        "b_3": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_3.tiff",
+        "b_4": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_4.tiff",
+        "b_5": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_5.tiff",
+        "b_6": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_6.tiff",
+        "b_7": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 1900,
+          "y_min": 850,
+          "x_max": 2000,
+          "y_max": 950,
+          "label": "Pueblo Range, Colorado, USA"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "38°16'48.0\"N 104°36'36.0\"W",
+        "session_id": "PHISAT-2_L1_000003806_20251108175935_20251108175937_842AA704" 
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session1",
+      "bands": {
+        "b_0": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_0.tiff",
+        "b_1": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_1.tiff",
+        "b_2": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_2.tiff",
+        "b_3": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_3.tiff",
+        "b_4": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_4.tiff",
+        "b_5": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_5.tiff",
+        "b_6": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_6.tiff",
+        "b_7": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2000,
+          "y_min": 3300,
+          "x_max": 2100,
+          "y_max": 3400,
+          "label": "Sioux Falls Range, South Dakota, USA"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "43.56°\"N -96.46°\"W",
+        "session_id": "PHISAT-2_L1_000001707_20250305173150_20250305173156_64AC43E2" 
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session2",
+      "bands": {
+        "b_0": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_0.tiff",
+        "b_1": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_1.tiff",
+        "b_2": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_2.tiff",
+        "b_3": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_3.tiff",
+        "b_4": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_4.tiff",
+        "b_5": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_5.tiff",
+        "b_6": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_6.tiff",
+        "b_7": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2000,
+          "y_min": 4100,
+          "x_max": 2100,
+          "y_max": 4200,
+          "label": "Sioux Falls Range, South Dakota, USA"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "43.56°\"N -96.46°\"W",
+        "session_id": "PHISAT-2_L1_000002032_20250415173147_20250415173154_B91F3C81" 
+      }
+    }
+  ]
+}

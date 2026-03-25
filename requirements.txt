@@ -1,0 +1,6 @@
+pillow
+tifffile
+matplotlib
+rasterio
+numpy
+scikit-image

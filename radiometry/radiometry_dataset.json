@@ -1,0 +1,274 @@
+{
+  "entries": [
+    {
+      "category": "radiometry",
+      "location": "GHNA",
+      "session": "Session1",
+      "bands": {
+        "b_0": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_0.tiff",
+        "b_1": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_1.tiff",
+        "b_2": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_2.tiff",
+        "b_3": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_3.tiff",
+        "b_4": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_4.tiff",
+        "b_5": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_5.tiff",
+        "b_6": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_6.tiff",
+        "b_7": "radiometry/LANDHYPERNET/GHNA/Session1/bands/Bp_0_0_4096_6042_0_0_4096_6042_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2025,
+          "y_min": 1375,
+          "x_max": 2125,
+          "y_max": 1475,
+          "label": "Gobabeb Gana"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "23°36'05.5\"S 15°07'33.2\"E",
+        "session_id": "PHISAT-2_L1_000003539_20251006092647_20251006092651_E453EADD"
+      }
+    },
+    {
+      "category": "radiometry",
+      "location": "LYB4",
+      "session": "Session1",
+      "bands": {
+        "b_0": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_0.tiff",
+        "b_1": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_1.tiff",
+        "b_2": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_2.tiff",
+        "b_3": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_3.tiff",
+        "b_4": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_4.tiff",
+        "b_5": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_5.tiff",
+        "b_6": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_6.tiff",
+        "b_7": "radiometry/PICS/LYB4/Session1/bands/Bp_0_0_4096_10182_0_0_4096_10182_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2000,
+          "y_min": 6000,
+          "x_max": 2100,
+          "y_max": 6100,
+          "label": "Lybia, Namibia"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "28.55°\"N 23.39°\"E",
+        "session_id": "PHISAT-2_L1_000001396_20241021091804_20241021091810_4298F46C"
+      }
+    },
+    {
+      "category": "radiometry",
+      "location": "ALG3",
+      "session": "Session1",
+      "bands": {
+        "b_0": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_0.tiff",
+        "b_1": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_1.tiff",
+        "b_2": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_2.tiff",
+        "b_3": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_3.tiff",
+        "b_4": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_4.tiff",
+        "b_5": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_5.tiff",
+        "b_6": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_6.tiff",
+        "b_7": "radiometry/PICS/ALG3/Session1/bands/Bp_0_0_4096_20881_0_0_4096_20881_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2000,
+          "y_min": 10620,
+          "x_max": 2100,
+          "y_max": 10720,
+          "label": "Algeria"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "30.32°\"N 7.66°\"E",
+        "session_id": "PHISAT-2_L1_000001297_20240831102554_20240831102607_CFF25AB4"
+      }
+    },
+    {
+      "category": "radiometry",
+      "location": "ALG3",
+      "session": "Session2",
+      "bands": {
+        "b_0": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_0.tiff",
+        "b_1": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_1.tiff",
+        "b_2": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_2.tiff",
+        "b_3": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_3.tiff",
+        "b_4": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_4.tiff",
+        "b_5": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_5.tiff",
+        "b_6": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_6.tiff",
+        "b_7": "radiometry/PICS/ALG3/Session2/bands/Bp_0_0_4096_20698_0_0_4096_20698_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2000,
+          "y_min": 10300,
+          "x_max": 2100,
+          "y_max": 10400,
+          "label": "Algeria"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "30.32°\"N 7.66°\"E",
+        "session_id": "PHISAT-2_L1_000001306_20240912102810_20240912102823_3062F6AB"
+      }
+    },
+      {
+      "category": "radiometry",
+      "location": "BOAT",
+      "session": "Session1",
+      "bands": {
+        "b_0": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_0.tiff",
+        "b_1": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_1.tiff",
+        "b_2": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_2.tiff",
+        "b_3": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_3.tiff",
+        "b_4": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_4.tiff",
+        "b_5": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_5.tiff",
+        "b_6": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_6.tiff",
+        "b_7": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2270,
+          "y_min": 1840,
+          "x_max": 2370,
+          "y_max": 1940,
+          "label": "Boatou"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "40.84°\"N 109.46°\"E",
+        "session_id": "PHISAT-2_L1_000001340_20241007034054_20241007034103_E04D392C"
+      }
+    },
+    {
+      "category": "radiometry",
+      "location": "BOAT",
+      "session": "Session2",
+      "bands": {
+        "b_0": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_0.tiff",
+        "b_1": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_1.tiff",
+        "b_2": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_2.tiff",
+        "b_3": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_3.tiff",
+        "b_4": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_4.tiff",
+        "b_5": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_5.tiff",
+        "b_6": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_6.tiff",
+        "b_7": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 1650,
+          "y_min": 750,
+          "x_max": 1750,
+          "y_max": 850,
+          "label": "boatou"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",        
+        "coords": "40.84°\"N 109.46°\"E",
+        "session_id": "PHISAT-2_L1_000001553_20241231034302_20241231034308_8E698850"
+      }
+    },
+    {
+      "category": "radiometry",
+      "location": "LCFR",
+      "session": "Session1",
+      "bands": {
+        "b_0": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12_0.tiff",
+        "b_1": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12_1.tiff",
+        "b_2": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12_2.tiff",
+        "b_3": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12_3.tiff",
+        "b_4": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12_4.tiff",
+        "b_5": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12-5.tiff",
+        "b_6": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12_6.tiff",
+        "b_7": "RadCalNet/LCFR/Session1/bands/Bp_0_0_4096_11926_0_0_4096_11926_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 150,
+          "y_min": 5450,
+          "x_max": 250,
+          "y_max": 5550,
+          "label": "La Crau, France"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "43.56°\"N 4.87°\"E",
+        "session_id": "PHISAT-2_L1_000001450_20241101104933_20241101104940_F13E3810"
+      }
+    },
+    {
+      "category": "radiometry",
+      "location": "LCFR",
+      "session": "Session2",
+      "bands": {
+        "b_0": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12_0.tiff",
+        "b_1": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12_1.tiff",
+        "b_2": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12_2.tiff",
+        "b_3": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12_3.tiff",
+        "b_4": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12_4.tiff",
+        "b_5": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12-5.tiff",
+        "b_6": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12_6.tiff",
+        "b_7": "RadCalNet/LCFR/Session2/bands/Bp_0_0_4096_10175_0_0_4096_10175_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 370,
+          "y_min": 1850,
+          "x_max": 470,
+          "y_max": 1950,
+          "label": "La Crau, France"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "43.56°\"N 4.87°\"E",
+        "session_id": "PHISAT-2_L1_000001515_20241128104314_20241128104320_92EDCC11"
+      }
+    },
+    {
+      "category": "radiometry",
+      "location": "RVUS",
+      "session": "Session1",
+      "bands": {
+        "b_0": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12_0.tiff",
+        "b_1": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12_1.tiff",
+        "b_2": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12_2.tiff",
+        "b_3": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12_3.tiff",
+        "b_4": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12_4.tiff",
+        "b_5": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12-5.tiff",
+        "b_6": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12_6.tiff",
+        "b_7": "RadCalNet/RVUS/Session1/bands/Bp_0_0_4096_7364_0_0_4096_7364_12_7.tiff"
+      },
+      "bbox": [
+        {
+          "x_min": 2000,
+          "y_min": 950,
+          "x_max": 2100,
+          "y_max": 1050,
+          "label": "Railroad Valley Playa, Nevada, USA"
+        }
+      ],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": "4.75m",
+        "coords": "43.56°\"N 4.87°\"E",
+        "session_id": "PHISAT-2_L1_000001748_20250311184034_20250311184038_703A4450"        
+      }
+    }
+  ]
+}
