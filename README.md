@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains the **CalVal Simera Dataset**, a collection of data for calibration and validation (Calibration and Validation) of the Simera satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
+This repository contains the **CalVal Dataset**, a collection of data for calibration and validation of the PhiSat2 satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
 
 The original data is stored on Hugging Face: [https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main](https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main).
 
