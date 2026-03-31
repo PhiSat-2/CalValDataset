@@ -4,3 +4,4 @@ matplotlib
 rasterio
 numpy
 scikit-image
+huggingface_hub
