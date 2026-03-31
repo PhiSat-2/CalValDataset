@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains the **CalVal Dataset**, a collection of data for calibration and validation (Cal/Val) of the PhiSat satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
+This repository contains the **CalVal Dataset**, a collection of data for calibration and validation (Cal/Val) of the PhiSat2 satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
 
 The original data is stored on Hugging Face: [https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main](https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main).
 
@@ -34,11 +34,11 @@ CalValSimeraDataset/
 └── README.md                  
 ```
 
-Each JSON file in the `Coding/geometry/`, `Coding/image_quality/`, and `Coding/radiometry/` folders contains metadata for the products, including:
-- `session_id`: Unique identifier corresponding to the ZIP file name.
+Each JSON file in the `ProjectFolder/geometry/`, `ProjectFolder/image_quality/`, and `ProjectFolder/radiometry/` folders contains metadata for the products, including:
+- `session_id`: Unique identifier corresponding to the PhiSat2 product (ZIP file).
 - `category`: Data category (geometry, image_quality, radiometry).
-- `location`: Subfolder of the category.
-- `session`: Subfolder of the location.
+- `location`: Location of the captured PhiSat2 product. 
+- `session`: If multiple acquisitions are present in the same location 
 - Other metadata such as bounding box, resolution, coordinates, etc.
 
 ## How to Use
