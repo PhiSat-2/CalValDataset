@@ -1,8 +1,8 @@
-# CalVal Simera Dataset
+# CalVal Dataset
 
 ## Description
 
-This repository contains the **CalVal Dataset**, a collection of data for calibration and validation of the PhiSat2 satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
+This repository contains the **CalVal Dataset**, a collection of data for calibration and validation (Cal/Val) of the PhiSat satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
 
 The original data is stored on Hugging Face: [https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main](https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main).
 
@@ -12,28 +12,26 @@ The dataset structure is as follows:
 
 ```
 CalValSimeraDataset/
-├── Coding/
-│   ├── download_and_organize.py    # Python script to download and organize data
-│   ├── requirements.txt            # Required Python dependencies
-│   ├── geometry/
-│   │   └── geometry_dataset.json   # Metadata for geometry category
-│   ├── image_quality/
-│   │   └── image_quality_dataset.json  # Metadata for image_quality category
-│   ├── radiometry/
-│   │   └── radiometry_dataset.json # Metadata for radiometry category
-│   └── README.md                   # This file
+├── download_and_organize.py    # Python script to download and organize data
+├── requirements.txt            # Required Python dependencies
+├── example.py                  # Example code 
 ├── geometry/
-│   ├── [location]/
-│   │   └── [session]/
-│   │       └── [file.zip]          # Organized ZIP files
+|   ├── [location]/
+|   │   └── [session]/
+|   │       └── [file.zip]          # Organized ZIP files
+│   └── geometry_dataset.json   # Metadata for geometry category
 ├── image_quality/
-│   └── [location]/
-│       └── [session]/
-│           └── [file.zip]
-└── radiometry/
-    └── [location]/
-        └── [session]/
-            └── [file.zip]
+|   ├── [location]/
+|   │   └── [session]/
+|   │       └── [file.zip]          # Organized ZIP files
+│   └── image_quality_dataset.json   # Metadata for image_quality category
+├── radiometry/
+|   ├── [location]/
+|   │   └── [session]/
+|   │       └── [file.zip]          # Organized ZIP files
+│   └── radiometry_dataset.json   # Metadata for radiometry category
+├── LICENSE 
+└── README.md                  
 ```
 
 Each JSON file in the `Coding/geometry/`, `Coding/image_quality/`, and `Coding/radiometry/` folders contains metadata for the products, including:
