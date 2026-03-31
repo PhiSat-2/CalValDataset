@@ -48,7 +48,7 @@ Each JSON file in the `ProjectFolder/geometry/`, `ProjectFolder/image_quality/`,
 - Install dependencies: `pip install -r requirements.txt`
 
 ### Download and Organize Data
-1. Run the `download_and_organize.py` script from the `Coding` folder:
+1. Run the `download_and_organize.py` script from the `ProjectFolder`:
    ```
    python download_and_organize.py
    ```
