@@ -61,6 +61,12 @@ def download_zips(session_mapping):
             print(f"Downloaded {filename} to {target_dir}")
             downloaded_count += 1
             
+            # Pulisci la cache di Hugging Face nella cartella di destinazione
+            cache_dir = os.path.join(target_dir, ".cache")
+            if os.path.exists(cache_dir):
+                shutil.rmtree(cache_dir)
+                print(f"Cleaned cache in {target_dir}")
+            
             # Se UNZIP_FLAG è True, unzippa il file
             if UNZIP_FLAG:
                 with zipfile.ZipFile(local_path, 'r') as zip_ref:
