@@ -122,17 +122,17 @@
     },
       {
       "category": "radiometry",
-      "location": "BOAT",
+      "location": "BAOT",
       "session": "Session1",
       "bands": {
-        "b_0": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_0.tiff",
-        "b_1": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_1.tiff",
-        "b_2": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_2.tiff",
-        "b_3": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_3.tiff",
-        "b_4": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_4.tiff",
-        "b_5": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_5.tiff",
-        "b_6": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_6.tiff",
-        "b_7": "image_quality/BOAT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_7.tiff"
+        "b_0": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_0.tiff",
+        "b_1": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_1.tiff",
+        "b_2": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_2.tiff",
+        "b_3": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_3.tiff",
+        "b_4": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_4.tiff",
+        "b_5": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_5.tiff",
+        "b_6": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_6.tiff",
+        "b_7": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_7.tiff"
       },
       "bbox": [
         {
@@ -140,7 +140,7 @@
           "y_min": 1840,
           "x_max": 2370,
           "y_max": 1940,
-          "label": "Boatou"
+          "label": "Baotou"
         }
       ],
       "metadata": {
@@ -152,17 +152,17 @@
     },
     {
       "category": "radiometry",
-      "location": "BOAT",
+      "location": "BAOT",
       "session": "Session2",
       "bands": {
-        "b_0": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_0.tiff",
-        "b_1": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_1.tiff",
-        "b_2": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_2.tiff",
-        "b_3": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_3.tiff",
-        "b_4": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_4.tiff",
-        "b_5": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_5.tiff",
-        "b_6": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_6.tiff",
-        "b_7": "image_quality/BOAT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_7.tiff"
+        "b_0": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_0.tiff",
+        "b_1": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_1.tiff",
+        "b_2": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_2.tiff",
+        "b_3": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_3.tiff",
+        "b_4": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_4.tiff",
+        "b_5": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_5.tiff",
+        "b_6": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_6.tiff",
+        "b_7": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_7.tiff"
       },
       "bbox": [
         {
@@ -170,7 +170,7 @@
           "y_min": 750,
           "x_max": 1750,
           "y_max": 850,
-          "label": "boatou"
+          "label": "Baotou"
         }
       ],
       "metadata": {
