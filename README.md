@@ -41,6 +41,28 @@ Each JSON file in the `ProjectFolder/geometry/`, `ProjectFolder/image_quality/`,
 - `session`: If multiple acquisitions are present in the same location 
 - Other metadata such as bounding box, resolution, coordinates, etc.
 
+## PHISAT‑2 Reference Sites
+
+The table below lists all PHISAT‑2 reference sites included in the dataset, together with their geographic location and the availability of **PHISAT‑2 Level‑1 ZIP files**.
+
+✔︎ = ZIP files available  
+✘ = no ZIP files available
+
+| Site | Country | Latitude | Longitude | DATA |
+|------|---------|----------|-----------|:---:|
+| Railroad Valley Playa | USA | 38.497 N | 115.690 W | ✔︎ |
+| La Crau | France | 43.56 N | 4.87 E | ✔︎ |
+| Gobabeb (RadCalNet) | Namibia | 23.600 S | 15.120 E | ✔︎ |
+| Baotou (RadCalNet) | China | 40.84 N | 109.46 E | ✔︎ |
+| Gobabeb (LANDHYPERNET) | Namibia | 23.60153 S | 15.12589 E | ✔︎ |
+| Jarvselja | Estonia | 58.281975 N | 27.312959 E | ✘ |
+| Jolanda di Savoia | Italy | 44.88 N | 11.98 E | ✘ |
+| Lonzee | Belgium | 50.551493 N | 4.745911 E | ✘ |
+| Wytham Woods | United Kingdom | 51.777206 N | 1.338494 W | ✘ |
+| Princess Elisabeth | Antarctica | 71.940128 S | 23.305260 E | ✘ |
+| Libya‑4 | Libya | 28.55 N | 23.39 E | ✔︎ |
+
+
 ## How to Use
 
 ### Prerequisites
