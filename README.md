@@ -4,14 +4,14 @@
 
 This repository contains the **CalVal Dataset**, a collection of data for calibration and validation (Cal/Val) of the PhiSat2 satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
 
-The original data is stored on Hugging Face: [https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main](https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset/tree/main).
+The original data is stored on Hugging Face: [https://huggingface.co/datasets/lorenzopapa53/CalValDataset/tree/main](https://huggingface.co/datasets/lorenzopapa53/CalValDataset/tree/main).
 
 ## Data Structure
 
 The dataset structure is as follows:
 
 ```
-CalValSimeraDataset/
+CalValDataset/
 ├── download_and_organize.py    # Python script to download and organize data
 ├── requirements.txt            # Required Python dependencies
 ├── example.py                  # Example code 
@@ -76,9 +76,9 @@ If you use this dataset in your research, cite as follows:
 Example BibTeX citation:
 ```
 @dataset{papa_calval_dataset,
-  title={CalVal Simera Dataset},
+  title={CalVal Dataset},
   author={Papa, Lorenzo},
   year={2026},
-  url={https://huggingface.co/datasets/lorenzopapa53/CalValSimeraDataset}
+  url={https://huggingface.co/datasets/lorenzopapa53/CalValDataset}
 }
 ```
