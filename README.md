@@ -50,17 +50,24 @@ The table below lists all PHISAT‑2 reference sites included in the dataset, to
 
 | Site | Country | Latitude | Longitude | DATA |
 |------|---------|----------|-----------|:---:|
-| Railroad Valley Playa | USA | 38.497 N | 115.690 W | ✔︎ |
-| La Crau | France | 43.56 N | 4.87 E | ✔︎ |
-| Gobabeb (RadCalNet) | Namibia | 23.600 S | 15.120 E | ✔︎ |
-| Baotou (RadCalNet) | China | 40.84 N | 109.46 E | ✔︎ |
-| Gobabeb (LANDHYPERNET) | Namibia | 23.60153 S | 15.12589 E | ✔︎ |
-| Jarvselja | Estonia | 58.281975 N | 27.312959 E | ✘ |
-| Jolanda di Savoia | Italy | 44.88 N | 11.98 E | ✘ |
-| Lonzee | Belgium | 50.551493 N | 4.745911 E | ✘ |
-| Wytham Woods | United Kingdom | 51.777206 N | 1.338494 W | ✘ |
-| Princess Elisabeth | Antarctica | 71.940128 S | 23.305260 E | ✘ |
-| Libya‑4 | Libya | 28.55 N | 23.39 E | ✔︎ |
+| Railroad Valley Playa (RVUS) | USA | 38.497 N | 115.690 W | ✔︎ |
+| La Crau (LCFR) | France | 43.56 N | 4.87 E | ✔︎ |
+| Gobabeb (GONA) | Namibia | 23.600 S | 15.120 E | ✔︎ |
+| Baotou (BAOT) | China | 40.84 N | 109.46 E | ✔︎ |
+| Shadnagar (SHAD) | India | 17.033 N | 78.183 E | ✘ |
+| Gobabeb (GHNA) | Namibia | 23.60153 S | 15.12589 E | ✔︎ |
+| Jarvselja (JAES) | Estonia | 58.281975 N | 27.312959 E | ✘ |
+| Jolanda di Savoia (JSIT) | Italy | 44.88 N | 11.98 E | ✘ |
+| Lonzee (LOBE) | Belgium | 50.551493 N | 4.745911 E | ✘ |
+| Wytham Woods (WWUK) | United Kingdom | 51.777206 N | 1.338494 W | ✘ |
+| Princess Elisabeth (PEAN) | Antarctica | 71.940128 S | 23.305260 E | ✘ |
+| Libya‑4 (LYB4) | Libya | 28.55 N | 23.39 E | ✔︎ |
+| Libya‑1 (LYB1) | Libya | 24.42 N | 13.35 E | ✘ |
+| Algeria-3 (ALG3) | Algeria | 30.32 N | 7.66 E | ✔︎ |
+| Piedmont (PIED) | Italy | 44.6724 N | 7.2665 E | ✘ |
+| Grosseto (GROS) | Italy | 42.76 N | 11.06 E | ✘ |
+| Pueblo Range (PRING) | USA | 38.28 N | 104.61 W | ✔︎ |
+| Sioux Falls Range (SFRG) | USA | 43.56 N | 96.46 W | ✔︎ |
 
 
 ## How to Use
