@@ -70,6 +70,11 @@ The table below lists all PHISAT‑2 reference sites included in the dataset, to
 | Sioux Falls Range (SFRG) | USA | 43.56 N | 96.46 W | ✔︎ | 2 |
 
 
+### To‑Do / Next Steps
+- Increase the number of acquisitions per site
+- Add dedicated acquisitions for cross‑talk analysis
+
+
 ## How to Use
 
 ### Prerequisites
@@ -95,7 +100,18 @@ During execution, the script prints messages for each main operation (collecting
 - To enable unzipping, change `UNZIP_FLAG = True` in the code.
 
 ## Contributions and Issues
-To report issues or contribute, open an issue on GitHub.
+
+Users and collaborators are encouraged to **propose new reference sites or locations of interest** to be considered for future acquisitions.
+
+Proposals should be submitted by opening a **GitHub Issue** in this repository.
+
+When creating an Issue, please include the following information:
+- **Site name**
+- **Approximate geographic coordinates**
+- **Type of interest** (e.g. radiometry, geometry, image quality, cross‑talk)
+- **Motivation and expected benefits** for the PHISAT‑2 dataset
+
+Community feedback and discussion through GitHub Issues will support the selection and prioritization of future acquisition targets.
 
 ## Citation
 If you use this dataset in your research, cite as follows:
