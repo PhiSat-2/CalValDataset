@@ -5,3 +5,5 @@ rasterio
 numpy
 scikit-image
 huggingface_hub
+requests
+tqdm
