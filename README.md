@@ -4,7 +4,8 @@
 
 This repository contains the **CalVal Dataset**, a collection of data for calibration and validation (Cal/Val) of the PhiSat2 satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
 
-The original data is stored on Hugging Face: [https://huggingface.co/datasets/lorenzopapa53/CalValDataset/tree/main](https://huggingface.co/datasets/lorenzopapa53/CalValDataset/tree/main).
+The dataset is accessed and downloaded directly through the official **INSULA PHISAT-2 API**.  
+Users must first register to the INSULA platform and then provide their credentials in the download script to retrieve the data.
 
 ## Data Structure
 
@@ -81,18 +82,30 @@ The table below lists all PHISAT‑2 reference sites included in the dataset, to
 - Python 3.x installed.
 - Install dependencies: `pip install -r requirements.txt`
 
+### INSULA Account Setup
+Before downloading the data, you must create an account on the INSULA PHISAT-2 platform:
+
+https://identity.insula.earth/realms/phisat2/protocol/openid-connect/auth?client_id=webapp-client&redirect_uri=https%3A%2F%2Fphisat2.insula.earth%2Fperception%2Fauth&response_type=code&scope=openid+profile+email
+
+After registration, open the file `download_and_organize.py` and insert your credentials:
+
+    # INSULA credentials
+    INSULA_USERNAME = "YOUR USERNAME"
+    INSULA_PASSWORD = "YOUR PSW"
+
 ### Download and Organize Data
 1. Run the `download_and_organize.py` script from the `ProjectFolder`:
-   ```
-   python download_and_organize.py
-   ```
+
+        python download_and_organize.py
+
 2. The script:
+   - Authenticates with the INSULA PHISAT-2 API using your credentials.
    - Reads the JSON files to collect all `session_id`s.
-   - Downloads the corresponding ZIP files from Hugging Face.
+   - Downloads the corresponding ZIP files from the INSULA API.
    - Organizes the ZIPs into the appropriate folders following the `category/location/session` path.
    - Optionally unzips the files (the `UNZIP_FLAG` in the code, currently set to `False`).
 
-During execution, the script prints messages for each main operation (collecting session_id, download, moving).
+During execution, the script prints messages for each main operation (authentication, collecting session_id, download, moving).
 
 ### Notes
 - ZIP files are downloaded to the root folder and then moved to the correct positions.
