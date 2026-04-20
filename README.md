@@ -136,7 +136,6 @@ Example BibTeX citation:
 @dataset{papa_calval_dataset,
   title={CalVal Dataset},
   author={Papa, Lorenzo},
-  year={2026},
-  url={https://huggingface.co/datasets/lorenzopapa53/CalValDataset}
+  year={2026}
 }
 ```
