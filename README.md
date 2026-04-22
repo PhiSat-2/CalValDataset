@@ -2,10 +2,19 @@
 
 ## Description
 
-This repository contains the **CalVal Dataset**, a collection of data for calibration and validation (Cal/Val) of the PhiSat2 satellite. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
+This repository contains the **CalVal Dataset**, a collection of data for calibration and validation (Cal/Val) of satellite missions, starting with **PhiSat-2**. The data is organized into three main categories: `geometry`, `image_quality`, and `radiometry`. Each category includes subfolders for locations and sessions, containing ZIP files of satellite products.
 
-The dataset is accessed and downloaded directly through the official **INSULA PHISAT-2 API**.  
+The dataset is accessed and downloaded directly through the official INSULA PHISAT-2 API.  
 Users must first register to the INSULA platform and then provide their credentials in the download script to retrieve the data.
+
+## Satellite Data Sources
+
+### PHISAT-2
+- Official product documentation: https://app.open-cosmos.com/help/data-catalog/products/phisat2  
+- GitHub organization: https://github.com/PhiSat-2  
+
+> This section will be extended in the future to include additional satellite missions.
+
 
 ## Data Structure
 
