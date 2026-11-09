@@ -1,18 +1,19 @@
 {
+  "schema_version": 1,
   "entries": [
     {
       "category": "image_quality",
       "location": "BAOT",
       "session": "Session1",
       "bands": {
-        "b_0": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_0.tiff",
-        "b_1": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_1.tiff",
-        "b_2": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_2.tiff",
-        "b_3": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_3.tiff",
-        "b_4": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_4.tiff",
-        "b_5": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_5.tiff",
-        "b_6": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_6.tiff",
-        "b_7": "image_quality/BAOT/Session1/bands/Bp_0_0_4096_14266_0_0_4096_14266_12_7.tiff"
+        "b_0": "image_quality/BAOT/Session1/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session1/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session1/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session1/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session1/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session1/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session1/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session1/bands/b_7.tiff"
       },
       "bbox": [
         {
@@ -25,24 +26,36 @@
       ],
       "metadata": {
         "payload": "PSat2",
-        "resolution": "4.75m",
+        "resolution": 4.75,
         "coords": "40.84°\"N 109.46°\"E",
-        "session_id": "PHISAT-2_L1_000001340_20241007034054_20241007034103_E04D392C"
-      }
+        "session_id": "PHISAT-2_L1_000001340_20241007034054_20241007034103_E04D392C",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "a970a88c-b6ff-5482-ab74-75ffe9d1a2a3",
+        "product_name": "PHISAT-2_L1_000001340_20241007034054_20241007034103_E04D392C.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-10-07T03:40:54Z",
+        "acquisition_end": "2024-10-07T03:41:03Z",
+        "acquisition_date": "2024-10-07",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001340_20241007034054_20241007034103_E04D392C.zip"
+      },
+      "directory": "image_quality/BAOT/Session1"
     },
     {
       "category": "image_quality",
       "location": "BAOT",
       "session": "Session2",
       "bands": {
-        "b_0": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_0.tiff",
-        "b_1": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_1.tiff",
-        "b_2": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_2.tiff",
-        "b_3": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_3.tiff",
-        "b_4": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_4.tiff",
-        "b_5": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_5.tiff",
-        "b_6": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_6.tiff",
-        "b_7": "image_quality/BAOT/Session2/bands/Bp_0_0_4096_10264_0_0_4096_10264_12_7.tiff"
+        "b_0": "image_quality/BAOT/Session2/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session2/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session2/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session2/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session2/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session2/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session2/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session2/bands/b_7.tiff"
       },
       "bbox": [
         {
@@ -55,9 +68,483 @@
       ],
       "metadata": {
         "payload": "PSat2",
-        "resolution": "4.75m",
+        "resolution": 4.75,
         "coords": "40.84°\"N 109.46°\"E",
-        "session_id": "PHISAT-2_L1_000001553_20241231034302_20241231034308_8E698850"
+        "session_id": "PHISAT-2_L1_000001553_20241231034302_20241231034308_8E698850",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "63803eaf-0f5d-5b55-8026-da10a1a42a0f",
+        "product_name": "PHISAT-2_L1_000001553_20241231034302_20241231034308_8E698850.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-12-31T03:43:02Z",
+        "acquisition_end": "2024-12-31T03:43:08Z",
+        "acquisition_date": "2024-12-31",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001553_20241231034302_20241231034308_8E698850.zip"
+      },
+      "directory": "image_quality/BAOT/Session2"
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session3",
+      "directory": "image_quality/BAOT/Session3",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session3/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session3/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session3/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session3/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session3/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session3/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session3/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session3/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000001470_20241109034525_20241109034531_62873A7A",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "f000833d-1483-5856-9b4e-30e45a3d0223",
+        "product_name": "PHISAT-2_L1_000001470_20241109034525_20241109034531_62873A7A.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-11-09T03:45:25Z",
+        "acquisition_end": "2024-11-09T03:45:31Z",
+        "acquisition_date": "2024-11-09",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001470_20241109034525_20241109034531_62873A7A.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session4",
+      "directory": "image_quality/BAOT/Session4",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session4/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session4/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session4/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session4/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session4/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session4/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session4/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session4/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000001486_20241114035124_20241114035130_97490E87",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "e71ea73e-9fa4-5968-b2e3-cb48ab364f66",
+        "product_name": "PHISAT-2_L1_000001486_20241114035124_20241114035130_97490E87.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-11-14T03:51:24Z",
+        "acquisition_end": "2024-11-14T03:51:30Z",
+        "acquisition_date": "2024-11-14",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001486_20241114035124_20241114035130_97490E87.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session5",
+      "directory": "image_quality/BAOT/Session5",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session5/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session5/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session5/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session5/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session5/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session5/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session5/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session5/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000001507_20241125034409_20241125034415_16A61A82",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "224edefa-ca67-57ee-8052-be908802b4ec",
+        "product_name": "PHISAT-2_L1_000001507_20241125034409_20241125034415_16A61A82.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-11-25T03:44:09Z",
+        "acquisition_end": "2024-11-25T03:44:15Z",
+        "acquisition_date": "2024-11-25",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001507_20241125034409_20241125034415_16A61A82.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session6",
+      "directory": "image_quality/BAOT/Session6",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session6/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session6/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session6/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session6/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session6/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session6/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session6/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session6/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000002209_20250506034304_20250506034311_BD0848A6",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "cbdccb8d-1bc1-5e6f-9dcb-bea0bca6922c",
+        "product_name": "PHISAT-2_L1_000002209_20250506034304_20250506034311_BD0848A6.zip",
+        "product_type": "L1",
+        "acquisition_start": "2025-05-06T03:43:04Z",
+        "acquisition_end": "2025-05-06T03:43:11Z",
+        "acquisition_date": "2025-05-06",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000002209_20250506034304_20250506034311_BD0848A6.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session7",
+      "directory": "image_quality/BAOT/Session7",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session7/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session7/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session7/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session7/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session7/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session7/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session7/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session7/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000002452_20250605034831_20250605034838_08BF1F97",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "b78c7660-4401-5cc6-b5a7-71dbe66fb482",
+        "product_name": "PHISAT-2_L1_000002452_20250605034831_20250605034838_08BF1F97.zip",
+        "product_type": "L1",
+        "acquisition_start": "2025-06-05T03:48:31Z",
+        "acquisition_end": "2025-06-05T03:48:38Z",
+        "acquisition_date": "2025-06-05",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000002452_20250605034831_20250605034838_08BF1F97.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session8",
+      "directory": "image_quality/BAOT/Session8",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session8/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session8/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session8/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session8/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session8/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session8/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session8/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session8/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000004577_20260205035258_20260205035302_36DFE460",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "0c23a3cf-d14a-5d31-833e-8bcd10d41fa9",
+        "product_name": "PHISAT-2_L1_000004577_20260205035258_20260205035302_36DFE460.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-02-05T03:52:58Z",
+        "acquisition_end": "2026-02-05T03:53:02Z",
+        "acquisition_date": "2026-02-05",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000004577_20260205035258_20260205035302_36DFE460.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session9",
+      "directory": "image_quality/BAOT/Session9",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session9/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session9/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session9/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session9/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session9/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session9/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session9/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session9/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000004683_20260302034849_20260302034854_89A8EB0A",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "5ad729dd-8542-50ee-af5b-7756992eca37",
+        "product_name": "PHISAT-2_L1_000004683_20260302034849_20260302034854_89A8EB0A.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-03-02T03:48:49Z",
+        "acquisition_end": "2026-03-02T03:48:54Z",
+        "acquisition_date": "2026-03-02",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000004683_20260302034849_20260302034854_89A8EB0A.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session10",
+      "directory": "image_quality/BAOT/Session10",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session10/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session10/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session10/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session10/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session10/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session10/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session10/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session10/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000004778_20260323034810_20260323034814_8E0B9106",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "83b54709-2255-59b4-a922-a0538ff89c4c",
+        "product_name": "PHISAT-2_L1_000004778_20260323034810_20260323034814_8E0B9106.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-03-23T03:48:10Z",
+        "acquisition_end": "2026-03-23T03:48:14Z",
+        "acquisition_date": "2026-03-23",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000004778_20260323034810_20260323034814_8E0B9106.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session11",
+      "directory": "image_quality/BAOT/Session11",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session11/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session11/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session11/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session11/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session11/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session11/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session11/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session11/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000004993_20260409035539_20260409035544_7887381F",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "19ffa772-e9e3-5bd1-8bca-0255a5681544",
+        "product_name": "PHISAT-2_L1_000004993_20260409035539_20260409035544_7887381F.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-04-09T03:55:39Z",
+        "acquisition_end": "2026-04-09T03:55:44Z",
+        "acquisition_date": "2026-04-09",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000004993_20260409035539_20260409035544_7887381F.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session12",
+      "directory": "image_quality/BAOT/Session12",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session12/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session12/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session12/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session12/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session12/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session12/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session12/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session12/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000005082_20260416035154_20260416035158_724F155C",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "85270282-d54e-54af-8c94-447fe29d99c5",
+        "product_name": "PHISAT-2_L1_000005082_20260416035154_20260416035158_724F155C.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-04-16T03:51:54Z",
+        "acquisition_end": "2026-04-16T03:51:58Z",
+        "acquisition_date": "2026-04-16",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000005082_20260416035154_20260416035158_724F155C.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session13",
+      "directory": "image_quality/BAOT/Session13",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session13/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session13/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session13/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session13/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session13/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session13/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session13/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session13/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000005265_20260503035358_20260503035403_27ACE46F",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "25e05756-76d5-5c9e-87eb-467ed186a645",
+        "product_name": "PHISAT-2_L1_000005265_20260503035358_20260503035403_27ACE46F.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-05-03T03:53:58Z",
+        "acquisition_end": "2026-05-03T03:54:03Z",
+        "acquisition_date": "2026-05-03",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000005265_20260503035358_20260503035403_27ACE46F.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session14",
+      "directory": "image_quality/BAOT/Session14",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session14/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session14/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session14/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session14/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session14/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session14/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session14/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session14/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000005697_20260609035609_20260609035613_07BE1EFB",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "90a67979-c852-5681-8f0c-bde4f18aac2f",
+        "product_name": "PHISAT-2_L1_000005697_20260609035609_20260609035613_07BE1EFB.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-06-09T03:56:09Z",
+        "acquisition_end": "2026-06-09T03:56:13Z",
+        "acquisition_date": "2026-06-09",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000005697_20260609035609_20260609035613_07BE1EFB.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session15",
+      "directory": "image_quality/BAOT/Session15",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session15/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session15/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session15/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session15/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session15/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session15/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session15/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session15/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000005860_20260619035555_20260619035559_B28C40B4",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "e1c50518-e033-52bd-b53c-e3de07ee8bba",
+        "product_name": "PHISAT-2_L1_000005860_20260619035555_20260619035559_B28C40B4.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-06-19T03:55:55Z",
+        "acquisition_end": "2026-06-19T03:55:59Z",
+        "acquisition_date": "2026-06-19",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000005860_20260619035555_20260619035559_B28C40B4.zip"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "BAOT",
+      "session": "Session16",
+      "directory": "image_quality/BAOT/Session16",
+      "bands": {
+        "b_0": "image_quality/BAOT/Session16/bands/b_0.tiff",
+        "b_1": "image_quality/BAOT/Session16/bands/b_1.tiff",
+        "b_2": "image_quality/BAOT/Session16/bands/b_2.tiff",
+        "b_3": "image_quality/BAOT/Session16/bands/b_3.tiff",
+        "b_4": "image_quality/BAOT/Session16/bands/b_4.tiff",
+        "b_5": "image_quality/BAOT/Session16/bands/b_5.tiff",
+        "b_6": "image_quality/BAOT/Session16/bands/b_6.tiff",
+        "b_7": "image_quality/BAOT/Session16/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000006022_20260629035426_20260629035430_A4A05DC7",
+        "site": "Baotou",
+        "country": "China",
+        "latitude": 40.85,
+        "longitude": 109.63,
+        "product_id": "004c1d95-96d4-5f95-a024-c74d79b1717c",
+        "product_name": "PHISAT-2_L1_000006022_20260629035426_20260629035430_A4A05DC7.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-06-29T03:54:26Z",
+        "acquisition_end": "2026-06-29T03:54:30Z",
+        "acquisition_date": "2026-06-29",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006022_20260629035426_20260629035430_A4A05DC7.zip"
       }
     }
   ]

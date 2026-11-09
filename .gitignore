@@ -1,42 +1,26 @@
-# Virtual Environment
-venv/
-env/
-ENV/
-.venv/
+# Credentials and sensitive local configuration
+.s5cfg
+*.s5cfg
+.env
+.env.*
+!.env.example
 
-# Python
+# Python / VS Code local environment
+.venv/
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
+.pytest_cache/
 
-# IDE
+# Results (can contain metadata)
+outputs/
+reports/
 .vscode/
-.idea/
-*.swp
-*.swo
-*~
+*.json.tmp
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Cache
-.cache/
-*.cache
+# Downloaded imagery (keep catalogue JSON files versioned)
+downloads/
+*.zip
+*.tif
+*.tiff
+*.npy
+.extracted_product

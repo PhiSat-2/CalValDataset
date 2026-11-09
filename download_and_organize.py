@@ -1,341 +1,150 @@
+#!/usr/bin/env python3
+"""Plan or download CalVal products with Phi-Down into category/site/session."""
+from __future__ import annotations
+
+import argparse
 import os
-import json
-import requests
+import shutil
+import zipfile
 from pathlib import Path
-from tqdm import tqdm
-import time
-from InsulaWorkflowClient import InsulaOpenIDConnect
 
-# INSULA API
-BASE_URL = "https://phisat2.insula.earth"
-INSULA_API_BASE = f"{BASE_URL}/secure/api/v2.0"
-INSULA_DOWNLOAD_ENDPOINT = f"{INSULA_API_BASE}/platformFiles"
-
-# INSULA credentials
-INSULA_USERNAME = "YOUR USERNAME"
-INSULA_PASSWORD = "YOUR PASSWORD"
-
-# OAuth2 Endpoints
-AUTHORIZATION_ENDPOINT = "https://identity.insula.earth/realms/phisat2/protocol/openid-connect/auth"
-TOKEN_ENDPOINT = "https://identity.insula.earth/realms/phisat2/protocol/openid-connect/token"
-REDIRECT_URI = "http://localhost:9207/auth"
-CLIENT_ID = "api-client"
-
-# Global headers
-HEADERS = None
-
-# Base directory
-BASE_DIR = os.path.dirname(__file__)
-
-# JSON folders
-JSON_DIRS = ["geometry", "image_quality", "radiometry"]
+from dataset import (
+    CATEGORIES, ROOT, discover_bands, entry_directory, expected_band_paths, load_catalogues,
+    product_name, read_json, validate_config, write_json,
+)
 
 
-def authenticate():
-    """Authenticates to INSULA using OpenID Connect and obtains the bearer token"""
-    global HEADERS
-    
-    print("Authenticating with INSULA using OpenID Connect...")
-    
-    try:
-        # Initialize OpenID Connect client
-        insula_auth = InsulaOpenIDConnect(
-            authorization_endpoint=AUTHORIZATION_ENDPOINT,
-            token_endpoint=TOKEN_ENDPOINT,
-            redirect_uri=REDIRECT_URI,
-            client_id=CLIENT_ID
-        )
-        
-        # Set credentials
-        insula_auth.set_user_credentials(username=INSULA_USERNAME, password=INSULA_PASSWORD)
-        
-        # Get bearer token
-        bearer = insula_auth.get_authorization_header()
-        
-        # Set headers with token
-        HEADERS = {
-            "Authorization": bearer,
-            "Content-Type": "application/json"
-        }
-        
-        print("✓ Authentication successful\n")
-        return True
-        
-    except Exception as e:
-        print(f"✗ Authentication failed: {e}\n")
-        return False
+def extract_archive(archive_path: Path, folder: Path) -> None:
+    """Check members before extraction, retaining the original archive."""
+    folder = folder.resolve()
+    with zipfile.ZipFile(archive_path) as archive:
+        for member in archive.infolist():
+            if not (folder / member.filename).resolve().is_relative_to(folder):
+                raise ValueError(f"Archive member escapes target: {member.filename}")
+        archive.extractall(folder)
 
 
-def read_all_json_files():
-    """Read all 3 JSON files and extract session_id data"""
-    session_data = {}
-    
-    print("=" * 80)
-    print("READING JSON FILES")
-    print("=" * 80 + "\n")
-    
-    for json_dir in JSON_DIRS:
-        json_path = os.path.join(BASE_DIR, json_dir, f"{json_dir}_dataset.json")
-        
-        print(f"Reading: {json_dir}_dataset.json")
-        
-        if os.path.exists(json_path):
-            try:
-                with open(json_path, 'r') as f:
-                    data = json.load(f)
-                    entries = data.get("entries", [])
-                    count = 0
-                    
-                    for entry in entries:
-                        session_id = entry.get("metadata", {}).get("session_id")
-                        if session_id:
-                            session_data[session_id] = {
-                                "category": entry.get("category"),
-                                "location": entry.get("location"),
-                                "session": entry.get("session"),
-                                "json_dir": json_dir
-                            }
-                            count += 1
-                    
-                    print(f"  ✓ Found {count} entries with session_id")
-            except Exception as e:
-                print(f"  ✗ Error reading file: {e}")
-        else:
-            print(f"  ✗ File not found: {json_path}")
-        
-        print()
-    
-    total = len(session_data)
-    print(f"\n{'='*80}")
-    print(f"TOTAL SESSION IDs FOUND: {total}")
-    print(f"{'='*80}\n")
-    
-    return session_data
-
-
-def search_product_on_insula(session_id):
-    """Search for the product on INSULA via platformFiles search"""
-    params = {
-        "filter": session_id,
-        "resultsPerPage": 1
-    }
-    
-    try:
-        search_url = f"{INSULA_API_BASE}/platformFiles/search/parametricFind"
-        response = requests.get(search_url, params=params, headers=HEADERS, timeout=10)
-        
-        if response.status_code == 200:
-            data = response.json()
-            files = data.get("_embedded", {}).get("platformFiles", [])
-            
-            if files:
-                product = files[0]
-                product_id = product.get("id")
-                
-                return {
-                    "found": True,
-                    "product_id": product_id,
-                    "filename": product.get("filename")
-                }
-            else:
-                return {"found": False}
-        else:
-            return {"found": False}
-            
-    except Exception as e:
-        print(f"    ✗ Error searching: {e}")
-        return {"found": False}
-
-
-def download_product(session_id, product_id):
-    """Download the product from INSULA"""
-    download_url = f"{INSULA_DOWNLOAD_ENDPOINT}/{product_id}/dl"
-    
-    try:
-        response = requests.get(download_url, headers=HEADERS, stream=True, timeout=60)
-        response.raise_for_status()
-        
-        # Get total file size
-        total_size = int(response.headers.get('content-length', 0))
-        
-        # Create temporary file in memory to store content
-        zip_data = b''
-        
-        # Download file with progress bar
-        if total_size > 0:
-            with tqdm(total=total_size, unit='B', unit_scale=True, desc=f"  Downloading", leave=False) as pbar:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        zip_data += chunk
-                        pbar.update(len(chunk))
-        else:
-            for chunk in response.iter_content(chunk_size=8192):
-                if chunk:
-                    zip_data += chunk
-        
-        return True, zip_data
-        
-    except Exception as e:
-        print(f"    ✗ Failed to download: {e}")
-        return False, None
-
-
-def save_zip_to_location(zip_data, session_id, category, location, session, json_dir):
-    """Save the downloaded ZIP directly to the final location"""
-    try:
-        # Create correct folder structure: category/location/session/
-        target_dir = os.path.join(BASE_DIR, json_dir, location, session)
-        os.makedirs(target_dir, exist_ok=True)
-        
-        # Create filename based on session_id
-        zip_filename = f"{session_id}.zip"
-        target_zip_path = os.path.join(target_dir, zip_filename)
-        
-        # Write ZIP file to final location
-        with open(target_zip_path, 'wb') as f:
-            f.write(zip_data)
-        
-        # Get file size for display
-        file_size_mb = len(zip_data) / (1024 * 1024)
-        print(f"  ✓ Saved to: {os.path.relpath(target_zip_path)} ({file_size_mb:.2f} MB)")
-        
-        return True
-        
-    except Exception as e:
-        print(f"  ✗ Error saving file: {e}")
-        return False
-
-
-def file_already_exists(category, location, session, session_id, json_dir):
-    """Check if the ZIP file already exists in the target location"""
-    target_dir = os.path.join(BASE_DIR, json_dir, location, session)
-    zip_filename = f"{session_id}.zip"
-    target_zip_path = os.path.join(target_dir, zip_filename)
-    
-    if os.path.exists(target_zip_path):
-        file_size_mb = os.path.getsize(target_zip_path) / (1024 * 1024)
-        print(f"  ⊘ Already downloaded ({file_size_mb:.2f} MB) - skipping")
-        return True
-    
-    return False
-
-
-def main():
-    print("\n")
-    print("╔════════════════════════════════════════════════════════════════════════════════╗")
-    print("║              INSULA PRODUCT DOWNLOADER - ALL CATEGORIES                        ║")
-    print("║                    Download one file at a time                                 ║")
-    print("╚════════════════════════════════════════════════════════════════════════════════╝")
-    print("\n")
-    
-    # Authenticate with INSULA
-    if not authenticate():
-        print("Failed to authenticate. Exiting.")
-        return
-    
-    # Read all JSON files
-    session_data = read_all_json_files()
-    
-    if not session_data:
-        print("✗ No session IDs found. Exiting.")
-        return
-    
-    # Download and organize files one by one
-    print("=" * 80)
-    print("DOWNLOADING PRODUCTS FROM INSULA")
-    print("=" * 80 + "\n")
-    
-    downloaded = []
-    not_found = []
-    failed = []
-    
-    total = len(session_data)
-    current = 0
-    
-    for session_id, info in session_data.items():
-        current += 1
-        category = info["category"]
-        location = info["location"]
-        session = info["session"]
-        json_dir = info["json_dir"]
-        
-        print(f"[{current}/{total}] {session_id}")
-        print(f"  Category: {category} | Location: {location} | Session: {session}")
-        
-        # Check if file already exists
-        if file_already_exists(category, location, session, session_id, json_dir):
-            downloaded.append({
-                "session_id": session_id,
-                "category": category,
-                "location": location,
-                "session": session
-            })
-            print()
-            time.sleep(0.5)
+def organize_bands(entry: dict, root: Path) -> None:
+    """Expose extracted TIFFs at the stable paths declared in the catalogue."""
+    root = root.resolve()
+    discovered = discover_bands(entry, root)
+    expected = expected_band_paths(entry)
+    missing = set(expected) - set(discovered)
+    if missing:
+        raise FileNotFoundError(f"Missing TIFF bands after extraction: {', '.join(sorted(missing))}")
+    for key, relative_target in expected.items():
+        source = root / discovered[key]
+        target = root / relative_target
+        if source.resolve() == target.resolve():
             continue
-        
-        # Search for product on INSULA
-        print("  Searching on INSULA...")
-        search_result = search_product_on_insula(session_id)
-        
-        if search_result.get("found"):
-            product_id = search_result.get("product_id")
-            print(f"  ✓ Found on INSULA (Product ID: {product_id})")
-            
-            # Download the product
-            print("  Downloading...")
-            success, zip_data = download_product(session_id, product_id)
-            
-            if success and zip_data:
-                print(f"  ✓ Downloaded successfully ({len(zip_data) / (1024*1024):.2f} MB)")
-                
-                # Save to final location
-                if save_zip_to_location(zip_data, session_id, category, location, session, json_dir):
-                    downloaded.append({
-                        "session_id": session_id,
-                        "category": category,
-                        "location": location,
-                        "session": session
-                    })
-                else:
-                    failed.append(session_id)
-            else:
-                print(f"  ✗ Download failed")
-                failed.append(session_id)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        # Preserve the original package layout; hard links avoid an extra raster copy.
+        try:
+            os.link(source, target)
+        except OSError:
+            shutil.copy2(source, target)
+    entry["bands"] = expected
+
+
+def download_entries(entries: list[dict], root: Path, searcher, *, unzip: bool = False) -> int:
+    root = root.resolve()
+    cache = root / "downloads"
+    cache.mkdir(parents=True, exist_ok=True)
+    failures = 0
+    for entry in entries:
+        try:
+            name = product_name(entry["metadata"]["session_id"]) + ".zip"
+            archive = cache / name
+            if not archive.is_file() or not zipfile.is_zipfile(archive):
+                # Resolve through the platform-files API. Catalogue IDs need not be
+                # downloadable platform-file IDs, so never pass a CSV UUID blindly.
+                product = searcher.resolve_product(name)
+                if product_name(str(product["Name"])) + ".zip" != name:
+                    raise ValueError(f"Insula returned a different product for {name}")
+                downloaded = Path(searcher.download_product(
+                    product_id=product["Id"], output_dir=str(cache),
+                    file_name=name, overwrite=True, unzip=False,
+                ))
+                if not zipfile.is_zipfile(downloaded):
+                    raise ValueError(f"Invalid downloaded ZIP: {name}")
+                if downloaded.resolve() != archive.resolve():
+                    shutil.copy2(downloaded, archive)
+            folder = entry_directory(entry, root)
+            folder.mkdir(parents=True, exist_ok=True)
+            target = folder / name
+            if not target.is_file() or not zipfile.is_zipfile(target):
+                shutil.copy2(archive, target)
+            if unzip:
+                marker = folder / ".extracted_product"
+                if not marker.is_file() or marker.read_text(encoding="utf-8") != name:
+                    extract_archive(target, folder)
+                organize_bands(entry, root)
+                marker.write_text(name, encoding="utf-8")
+            print(f"OK {entry['category']}/{entry['location']}/{entry['session']}: {name}")
+        except Exception as exc:
+            failures += 1
+            print(f"ERROR {entry['metadata']['session_id']}: {exc}")
+    return failures
+
+
+def select_entries(documents: dict, *, category: str | None = None,
+                   location: str | None = None, session: str | None = None,
+                   products: list[str] | None = None) -> list[dict]:
+    requested = {product_name(name) for name in products or []}
+    selected = [entry for cat, doc in documents.items() for entry in doc["entries"]
+                if (not category or cat == category)
+                and (not location or entry["location"].casefold() == location.casefold())
+                and (not session or entry["session"].casefold() == session.casefold())
+                and (not requested or product_name(entry["metadata"]["session_id"]) in requested)]
+    missing = requested - {product_name(e["metadata"]["session_id"]) for e in selected}
+    if missing:
+        raise ValueError(f"Products not found with these filters: {', '.join(sorted(missing))}")
+    if not selected:
+        raise ValueError("No products match the requested filters")
+    return selected
+
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dataset-root", type=Path, default=ROOT)
+    parser.add_argument("--config", type=Path, default=ROOT / ".s5cfg")
+    parser.add_argument("--category", choices=CATEGORIES)
+    parser.add_argument("--location", help="Location code, e.g. BAOT")
+    parser.add_argument("--session", help="Session label, e.g. Session1")
+    parser.add_argument("--json", type=Path, help="Read products from one catalogue or an edited JSON selection")
+    parser.add_argument("--product", action="append", help="Exact product name, with or without .zip; repeat for multiple products")
+    parser.add_argument("--download", action="store_true", help="Download imagery; default only prints a plan")
+    parser.add_argument("--unzip", action="store_true", help="Extract ZIPs and organize TIFFs at the band paths declared in the JSON")
+    args = parser.parse_args(argv)
+    documents = load_catalogues(args.dataset_root)
+    if args.json:
+        source = read_json(args.json)
+        documents = {category: {"entries": [e for e in source["entries"] if e["category"] == category]}
+                     for category in CATEGORIES}
+        if sum(len(doc["entries"]) for doc in documents.values()) != len(source["entries"]):
+            parser.error("Input JSON contains an unknown category")
+    try:
+        selected = select_entries(documents, category=args.category, location=args.location,
+                                  session=args.session, products=args.product)
+    except ValueError as exc:
+        parser.error(str(exc))
+    for entry in selected:
+        print(f"{entry['category']}/{entry['location']}/{entry['session']}: {entry['metadata']['session_id']}")
+    print(f"Selected: {len(selected)} category entries, {len({e['metadata']['session_id'] for e in selected})} unique products")
+    if not args.download or not selected:
+        return 0
+    from phidown import PhiSat2Searcher
+    validate_config(args.config)
+    failures = download_entries(selected, args.dataset_root, PhiSat2Searcher(config_file=str(args.config)), unzip=args.unzip)
+    if args.unzip:
+        if args.json:
+            # Update only the supplied selection, never replace full catalogues with a subset.
+            write_json(args.json, source)
         else:
-            print(f"  ✗ NOT FOUND on INSULA")
-            not_found.append(session_id)
-        
-        print()
-        
-        # Avoid overloading the API
-        time.sleep(1)
-    
-    # Print summary
-    print("\n" + "=" * 80)
-    print("DOWNLOAD SUMMARY")
-    print("=" * 80)
-    print(f"\n✓ Successfully downloaded and saved: {len(downloaded)}/{total} products\n")
-    
-    for item in downloaded:
-        structure = f"{item['category']}/{item['location']}/{item['session']}"
-        print(f"  • {item['session_id']}")
-        print(f"    └─ {structure}/{item['session_id']}.zip")
-    
-    if not_found:
-        print(f"\n✗ NOT FOUND on INSULA: {len(not_found)} products\n")
-        for session_id in not_found:
-            info = session_data[session_id]
-            print(f"  • {session_id} ({info['category']})")
-    
-    if failed:
-        print(f"\n✗ FAILED TO DOWNLOAD: {len(failed)} products\n")
-        for session_id in failed:
-            info = session_data[session_id]
-            print(f"  • {session_id} ({info['category']})")
-    
-    print("\n" + "=" * 80 + "\n")
+            for category, doc in documents.items():
+                write_json(args.dataset_root / category / f"{category}_dataset.json", doc)
+    return 1 if failures else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

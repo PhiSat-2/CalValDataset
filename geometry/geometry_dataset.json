@@ -1,18 +1,151 @@
 {
+  "schema_version": 1,
   "entries": [
+    {
+      "category": "geometry",
+      "location": "GROS",
+      "session": "Session1",
+      "directory": "geometry/GROS/Session1",
+      "bands": {
+        "b_0": "geometry/GROS/Session1/bands/b_0.tiff",
+        "b_1": "geometry/GROS/Session1/bands/b_1.tiff",
+        "b_2": "geometry/GROS/Session1/bands/b_2.tiff",
+        "b_3": "geometry/GROS/Session1/bands/b_3.tiff",
+        "b_4": "geometry/GROS/Session1/bands/b_4.tiff",
+        "b_5": "geometry/GROS/Session1/bands/b_5.tiff",
+        "b_6": "geometry/GROS/Session1/bands/b_6.tiff",
+        "b_7": "geometry/GROS/Session1/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000005799_20260615103059_20260615103103_3E54FAA2",
+        "site": "Grosseto",
+        "country": "Italy",
+        "latitude": 42.76,
+        "longitude": 11.06,
+        "product_id": "f744e355-1644-5cdb-b823-c91ace19bf81",
+        "product_name": "PHISAT-2_L1_000005799_20260615103059_20260615103103_3E54FAA2.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-06-15T10:30:59Z",
+        "acquisition_end": "2026-06-15T10:31:03Z",
+        "acquisition_date": "2026-06-15",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000005799_20260615103059_20260615103103_3E54FAA2.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "JAES",
+      "session": "Session1",
+      "directory": "geometry/JAES/Session1",
+      "bands": {
+        "b_0": "geometry/JAES/Session1/bands/b_0.tiff",
+        "b_1": "geometry/JAES/Session1/bands/b_1.tiff",
+        "b_2": "geometry/JAES/Session1/bands/b_2.tiff",
+        "b_3": "geometry/JAES/Session1/bands/b_3.tiff",
+        "b_4": "geometry/JAES/Session1/bands/b_4.tiff",
+        "b_5": "geometry/JAES/Session1/bands/b_5.tiff",
+        "b_6": "geometry/JAES/Session1/bands/b_6.tiff",
+        "b_7": "geometry/JAES/Session1/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000006257_20260713094259_20260713094303_6D54495D",
+        "site": "Jarvselja",
+        "country": "Estonia",
+        "latitude": 58.281975,
+        "longitude": 27.312959,
+        "product_id": "68e5a604-bba4-5f2c-9bd5-34433ac14c23",
+        "product_name": "PHISAT-2_L1_000006257_20260713094259_20260713094303_6D54495D.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-07-13T09:42:59Z",
+        "acquisition_end": "2026-07-13T09:43:03Z",
+        "acquisition_date": "2026-07-13",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006257_20260713094259_20260713094303_6D54495D.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "JAES",
+      "session": "Session2",
+      "directory": "geometry/JAES/Session2",
+      "bands": {
+        "b_0": "geometry/JAES/Session2/bands/b_0.tiff",
+        "b_1": "geometry/JAES/Session2/bands/b_1.tiff",
+        "b_2": "geometry/JAES/Session2/bands/b_2.tiff",
+        "b_3": "geometry/JAES/Session2/bands/b_3.tiff",
+        "b_4": "geometry/JAES/Session2/bands/b_4.tiff",
+        "b_5": "geometry/JAES/Session2/bands/b_5.tiff",
+        "b_6": "geometry/JAES/Session2/bands/b_6.tiff",
+        "b_7": "geometry/JAES/Session2/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000007608_20260919094716_20260919094719_6615A18C",
+        "site": "Jarvselja",
+        "country": "Estonia",
+        "latitude": 58.281975,
+        "longitude": 27.312959,
+        "product_id": "fc55c3c3-3ebf-5868-8845-d49b7e16d53e",
+        "product_name": "PHISAT-2_L1_000007608_20260919094716_20260919094719_6615A18C.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-09-19T09:47:16Z",
+        "acquisition_end": "2026-09-19T09:47:19Z",
+        "acquisition_date": "2026-09-19",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000007608_20260919094716_20260919094719_6615A18C.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "PIED",
+      "session": "Session1",
+      "directory": "geometry/PIED/Session1",
+      "bands": {
+        "b_0": "geometry/PIED/Session1/bands/b_0.tiff",
+        "b_1": "geometry/PIED/Session1/bands/b_1.tiff",
+        "b_2": "geometry/PIED/Session1/bands/b_2.tiff",
+        "b_3": "geometry/PIED/Session1/bands/b_3.tiff",
+        "b_4": "geometry/PIED/Session1/bands/b_4.tiff",
+        "b_5": "geometry/PIED/Session1/bands/b_5.tiff",
+        "b_6": "geometry/PIED/Session1/bands/b_6.tiff",
+        "b_7": "geometry/PIED/Session1/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000006272_20260714105201_20260714105205_7DC68138",
+        "site": "Piedmont",
+        "country": "Italy",
+        "latitude": 44.6724,
+        "longitude": 7.2665,
+        "product_id": "4bbb7f2a-c4f9-510d-b4e6-ff5dc526228c",
+        "product_name": "PHISAT-2_L1_000006272_20260714105201_20260714105205_7DC68138.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-07-14T10:52:01Z",
+        "acquisition_end": "2026-07-14T10:52:05Z",
+        "acquisition_date": "2026-07-14",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006272_20260714105201_20260714105205_7DC68138.zip"
+      }
+    },
     {
       "category": "geometry",
       "location": "PRING",
       "session": "Session1",
       "bands": {
-        "b_0": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_0.tiff",
-        "b_1": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_1.tiff",
-        "b_2": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_2.tiff",
-        "b_3": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_3.tiff",
-        "b_4": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_4.tiff",
-        "b_5": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_5.tiff",
-        "b_6": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_6.tiff",
-        "b_7": "geometry/PRING/Session1/bands/Bp_0_0_4096_9343_0_0_4096_9343_12_7.tiff"
+        "b_0": "geometry/PRING/Session1/bands/b_0.tiff",
+        "b_1": "geometry/PRING/Session1/bands/b_1.tiff",
+        "b_2": "geometry/PRING/Session1/bands/b_2.tiff",
+        "b_3": "geometry/PRING/Session1/bands/b_3.tiff",
+        "b_4": "geometry/PRING/Session1/bands/b_4.tiff",
+        "b_5": "geometry/PRING/Session1/bands/b_5.tiff",
+        "b_6": "geometry/PRING/Session1/bands/b_6.tiff",
+        "b_7": "geometry/PRING/Session1/bands/b_7.tiff"
       },
       "bbox": [
         {
@@ -25,24 +158,36 @@
       ],
       "metadata": {
         "payload": "PSat2",
-        "resolution": "4.75m",
+        "resolution": 4.75,
         "coords": "38°16'48.0\"N 104°36'36.0\"W",
-        "session_id": "PHISAT-2_L1_000001406_20241023181027_20241023181033_EAE9394D" 
-      }
+        "session_id": "PHISAT-2_L1_000001406_20241023181027_20241023181033_EAE9394D",
+        "site": "Pueblo Range",
+        "country": "USA",
+        "latitude": 38.28,
+        "longitude": -104.61,
+        "product_id": "88a16795-45d7-5cee-a2dc-71d3dab77754",
+        "product_name": "PHISAT-2_L1_000001406_20241023181027_20241023181033_EAE9394D.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-10-23T18:10:27Z",
+        "acquisition_end": "2024-10-23T18:10:33Z",
+        "acquisition_date": "2024-10-23",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001406_20241023181027_20241023181033_EAE9394D.zip"
+      },
+      "directory": "geometry/PRING/Session1"
     },
     {
       "category": "geometry",
       "location": "PRING",
       "session": "Session2",
       "bands": {
-        "b_0": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_0.tiff",
-        "b_1": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_1.tiff",
-        "b_2": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_2.tiff",
-        "b_3": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_3.tiff",
-        "b_4": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_4.tiff",
-        "b_5": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_5.tiff",
-        "b_6": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_6.tiff",
-        "b_7": "geometry/PRING/Session2/bands/Bp_0_0_4096_10527_0_0_4096_10527_12_7.tiff"
+        "b_0": "geometry/PRING/Session2/bands/b_0.tiff",
+        "b_1": "geometry/PRING/Session2/bands/b_1.tiff",
+        "b_2": "geometry/PRING/Session2/bands/b_2.tiff",
+        "b_3": "geometry/PRING/Session2/bands/b_3.tiff",
+        "b_4": "geometry/PRING/Session2/bands/b_4.tiff",
+        "b_5": "geometry/PRING/Session2/bands/b_5.tiff",
+        "b_6": "geometry/PRING/Session2/bands/b_6.tiff",
+        "b_7": "geometry/PRING/Session2/bands/b_7.tiff"
       },
       "bbox": [
         {
@@ -55,24 +200,36 @@
       ],
       "metadata": {
         "payload": "PSat2",
-        "resolution": "4.75m",
+        "resolution": 4.75,
         "coords": "38°16'48.0\"N 104°36'36.0\"W",
-        "session_id": "PHISAT-2_L1_000002138_20250427180007_20250427180014_5AA732E7" 
-      }
+        "session_id": "PHISAT-2_L1_000002138_20250427180007_20250427180014_5AA732E7",
+        "site": "Pueblo Range",
+        "country": "USA",
+        "latitude": 38.28,
+        "longitude": -104.61,
+        "product_id": "dd4ee81a-3055-5042-b868-aefb0794a098",
+        "product_name": "PHISAT-2_L1_000002138_20250427180007_20250427180014_5AA732E7.zip",
+        "product_type": "L1",
+        "acquisition_start": "2025-04-27T18:00:07Z",
+        "acquisition_end": "2025-04-27T18:00:14Z",
+        "acquisition_date": "2025-04-27",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000002138_20250427180007_20250427180014_5AA732E7.zip"
+      },
+      "directory": "geometry/PRING/Session2"
     },
     {
       "category": "geometry",
       "location": "PRING",
       "session": "Session3",
       "bands": {
-        "b_0": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_0.tiff",
-        "b_1": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_1.tiff",
-        "b_2": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_2.tiff",
-        "b_3": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_3.tiff",
-        "b_4": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_4.tiff",
-        "b_5": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_5.tiff",
-        "b_6": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_6.tiff",
-        "b_7": "geometry/PRING/Session3/bands/Bp_0_0_4096_4096_0_0_4096_4096_12_7.tiff"
+        "b_0": "geometry/PRING/Session3/bands/b_0.tiff",
+        "b_1": "geometry/PRING/Session3/bands/b_1.tiff",
+        "b_2": "geometry/PRING/Session3/bands/b_2.tiff",
+        "b_3": "geometry/PRING/Session3/bands/b_3.tiff",
+        "b_4": "geometry/PRING/Session3/bands/b_4.tiff",
+        "b_5": "geometry/PRING/Session3/bands/b_5.tiff",
+        "b_6": "geometry/PRING/Session3/bands/b_6.tiff",
+        "b_7": "geometry/PRING/Session3/bands/b_7.tiff"
       },
       "bbox": [
         {
@@ -85,9 +242,120 @@
       ],
       "metadata": {
         "payload": "PSat2",
-        "resolution": "4.75m",
+        "resolution": 4.75,
         "coords": "38°16'48.0\"N 104°36'36.0\"W",
-        "session_id": "PHISAT-2_L1_000003806_20251108175935_20251108175937_842AA704" 
+        "session_id": "PHISAT-2_L1_000003806_20251108175935_20251108175937_842AA704",
+        "site": "Pueblo Range",
+        "country": "USA",
+        "latitude": 38.28,
+        "longitude": -104.61,
+        "product_id": "2e83f5c0-9cfa-57d8-bbd6-8859b07b8bea",
+        "product_name": "PHISAT-2_L1_000003806_20251108175935_20251108175937_842AA704.zip",
+        "product_type": "L1",
+        "acquisition_start": "2025-11-08T17:59:35Z",
+        "acquisition_end": "2025-11-08T17:59:37Z",
+        "acquisition_date": "2025-11-08",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000003806_20251108175935_20251108175937_842AA704.zip"
+      },
+      "directory": "geometry/PRING/Session3"
+    },
+    {
+      "category": "geometry",
+      "location": "PRING",
+      "session": "Session4",
+      "directory": "geometry/PRING/Session4",
+      "bands": {
+        "b_0": "geometry/PRING/Session4/bands/b_0.tiff",
+        "b_1": "geometry/PRING/Session4/bands/b_1.tiff",
+        "b_2": "geometry/PRING/Session4/bands/b_2.tiff",
+        "b_3": "geometry/PRING/Session4/bands/b_3.tiff",
+        "b_4": "geometry/PRING/Session4/bands/b_4.tiff",
+        "b_5": "geometry/PRING/Session4/bands/b_5.tiff",
+        "b_6": "geometry/PRING/Session4/bands/b_6.tiff",
+        "b_7": "geometry/PRING/Session4/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000006698_20260807181214_20260807181217_326BD339",
+        "site": "Pueblo Range",
+        "country": "USA",
+        "latitude": 38.28,
+        "longitude": -104.61,
+        "product_id": "70fe0a85-43ae-522d-a956-b1dbf20732ce",
+        "product_name": "PHISAT-2_L1_000006698_20260807181214_20260807181217_326BD339.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-08-07T18:12:14Z",
+        "acquisition_end": "2026-08-07T18:12:17Z",
+        "acquisition_date": "2026-08-07",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006698_20260807181214_20260807181217_326BD339.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "PRING",
+      "session": "Session5",
+      "directory": "geometry/PRING/Session5",
+      "bands": {
+        "b_0": "geometry/PRING/Session5/bands/b_0.tiff",
+        "b_1": "geometry/PRING/Session5/bands/b_1.tiff",
+        "b_2": "geometry/PRING/Session5/bands/b_2.tiff",
+        "b_3": "geometry/PRING/Session5/bands/b_3.tiff",
+        "b_4": "geometry/PRING/Session5/bands/b_4.tiff",
+        "b_5": "geometry/PRING/Session5/bands/b_5.tiff",
+        "b_6": "geometry/PRING/Session5/bands/b_6.tiff",
+        "b_7": "geometry/PRING/Session5/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000006967_20260820181155_20260820181158_30455336",
+        "site": "Pueblo Range",
+        "country": "USA",
+        "latitude": 38.28,
+        "longitude": -104.61,
+        "product_id": "886e401a-196e-53f7-8a77-d13f41da54fb",
+        "product_name": "PHISAT-2_L1_000006967_20260820181155_20260820181158_30455336.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-08-20T18:11:55Z",
+        "acquisition_end": "2026-08-20T18:11:58Z",
+        "acquisition_date": "2026-08-20",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006967_20260820181155_20260820181158_30455336.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "PRING",
+      "session": "Session6",
+      "directory": "geometry/PRING/Session6",
+      "bands": {
+        "b_0": "geometry/PRING/Session6/bands/b_0.tiff",
+        "b_1": "geometry/PRING/Session6/bands/b_1.tiff",
+        "b_2": "geometry/PRING/Session6/bands/b_2.tiff",
+        "b_3": "geometry/PRING/Session6/bands/b_3.tiff",
+        "b_4": "geometry/PRING/Session6/bands/b_4.tiff",
+        "b_5": "geometry/PRING/Session6/bands/b_5.tiff",
+        "b_6": "geometry/PRING/Session6/bands/b_6.tiff",
+        "b_7": "geometry/PRING/Session6/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000007991_20261007181722_20261007181726_576FE623",
+        "site": "Pueblo Range",
+        "country": "USA",
+        "latitude": 38.28,
+        "longitude": -104.61,
+        "product_id": "6fe91e13-9a56-59a6-8d6b-75c8e91b0e3c",
+        "product_name": "PHISAT-2_L1_000007991_20261007181722_20261007181726_576FE623.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-10-07T18:17:22Z",
+        "acquisition_end": "2026-10-07T18:17:26Z",
+        "acquisition_date": "2026-10-07",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000007991_20261007181722_20261007181726_576FE623.zip"
       }
     },
     {
@@ -95,14 +363,14 @@
       "location": "SFRG",
       "session": "Session1",
       "bands": {
-        "b_0": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_0.tiff",
-        "b_1": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_1.tiff",
-        "b_2": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_2.tiff",
-        "b_3": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_3.tiff",
-        "b_4": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_4.tiff",
-        "b_5": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_5.tiff",
-        "b_6": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_6.tiff",
-        "b_7": "geometry/SFRG/Session1/bands/Bp_0_0_4096_10480_0_0_4096_10480_12_7.tiff"
+        "b_0": "geometry/SFRG/Session1/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session1/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session1/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session1/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session1/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session1/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session1/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session1/bands/b_7.tiff"
       },
       "bbox": [
         {
@@ -115,24 +383,36 @@
       ],
       "metadata": {
         "payload": "PSat2",
-        "resolution": "4.75m",
+        "resolution": 4.75,
         "coords": "43.56°\"N -96.46°\"W",
-        "session_id": "PHISAT-2_L1_000001707_20250305173150_20250305173156_64AC43E2" 
-      }
+        "session_id": "PHISAT-2_L1_000001707_20250305173150_20250305173156_64AC43E2",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "c61264cb-9a98-5520-90d0-f22ede5423ab",
+        "product_name": "PHISAT-2_L1_000001707_20250305173150_20250305173156_64AC43E2.zip",
+        "product_type": "L1",
+        "acquisition_start": "2025-03-05T17:31:50Z",
+        "acquisition_end": "2025-03-05T17:31:56Z",
+        "acquisition_date": "2025-03-05",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001707_20250305173150_20250305173156_64AC43E2.zip"
+      },
+      "directory": "geometry/SFRG/Session1"
     },
     {
       "category": "geometry",
       "location": "SFRG",
       "session": "Session2",
       "bands": {
-        "b_0": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_0.tiff",
-        "b_1": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_1.tiff",
-        "b_2": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_2.tiff",
-        "b_3": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_3.tiff",
-        "b_4": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_4.tiff",
-        "b_5": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_5.tiff",
-        "b_6": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_6.tiff",
-        "b_7": "geometry/SFRG/Session2/bands/Bp_0_0_4096_10448_0_0_4096_10448_12_7.tiff"
+        "b_0": "geometry/SFRG/Session2/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session2/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session2/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session2/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session2/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session2/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session2/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session2/bands/b_7.tiff"
       },
       "bbox": [
         {
@@ -145,9 +425,252 @@
       ],
       "metadata": {
         "payload": "PSat2",
-        "resolution": "4.75m",
+        "resolution": 4.75,
         "coords": "43.56°\"N -96.46°\"W",
-        "session_id": "PHISAT-2_L1_000002032_20250415173147_20250415173154_B91F3C81" 
+        "session_id": "PHISAT-2_L1_000002032_20250415173147_20250415173154_B91F3C81",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "bcc92c47-42f0-5181-bd1f-eae8282aaa4f",
+        "product_name": "PHISAT-2_L1_000002032_20250415173147_20250415173154_B91F3C81.zip",
+        "product_type": "L1",
+        "acquisition_start": "2025-04-15T17:31:47Z",
+        "acquisition_end": "2025-04-15T17:31:54Z",
+        "acquisition_date": "2025-04-15",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000002032_20250415173147_20250415173154_B91F3C81.zip"
+      },
+      "directory": "geometry/SFRG/Session2"
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session3",
+      "directory": "geometry/SFRG/Session3",
+      "bands": {
+        "b_0": "geometry/SFRG/Session3/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session3/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session3/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session3/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session3/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session3/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session3/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session3/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000001535_20241217173223_20241217173229_99460ED1",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "289703bc-6e09-55c0-baca-ed5781f22555",
+        "product_name": "PHISAT-2_L1_000001535_20241217173223_20241217173229_99460ED1.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-12-17T17:32:23Z",
+        "acquisition_end": "2024-12-17T17:32:29Z",
+        "acquisition_date": "2024-12-17",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001535_20241217173223_20241217173229_99460ED1.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session4",
+      "directory": "geometry/SFRG/Session4",
+      "bands": {
+        "b_0": "geometry/SFRG/Session4/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session4/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session4/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session4/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session4/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session4/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session4/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session4/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000005533_20260524174103_20260524174107_7036158A",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "2626b23b-9c06-542a-8754-c8693f8bfd55",
+        "product_name": "PHISAT-2_L1_000005533_20260524174103_20260524174107_7036158A.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-05-24T17:41:03Z",
+        "acquisition_end": "2026-05-24T17:41:07Z",
+        "acquisition_date": "2026-05-24",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000005533_20260524174103_20260524174107_7036158A.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session5",
+      "directory": "geometry/SFRG/Session5",
+      "bands": {
+        "b_0": "geometry/SFRG/Session5/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session5/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session5/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session5/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session5/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session5/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session5/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session5/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000006714_20260808174157_20260808174200_16B2FEA8",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "2f7ea966-dc89-5d82-a0c7-db08b7639fbf",
+        "product_name": "PHISAT-2_L1_000006714_20260808174157_20260808174200_16B2FEA8.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-08-08T17:41:57Z",
+        "acquisition_end": "2026-08-08T17:42:00Z",
+        "acquisition_date": "2026-08-08",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006714_20260808174157_20260808174200_16B2FEA8.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session6",
+      "directory": "geometry/SFRG/Session6",
+      "bands": {
+        "b_0": "geometry/SFRG/Session6/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session6/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session6/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session6/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session6/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session6/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session6/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session6/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000006989_20260821174131_20260821174134_4A4E269C",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "eedc89a2-ae94-5396-82c4-feee6627f8c5",
+        "product_name": "PHISAT-2_L1_000006989_20260821174131_20260821174134_4A4E269C.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-08-21T17:41:31Z",
+        "acquisition_end": "2026-08-21T17:41:34Z",
+        "acquisition_date": "2026-08-21",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006989_20260821174131_20260821174134_4A4E269C.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session7",
+      "directory": "geometry/SFRG/Session7",
+      "bands": {
+        "b_0": "geometry/SFRG/Session7/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session7/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session7/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session7/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session7/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session7/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session7/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session7/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000008004_20261008174631_20261008174634_00527D2B",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "7aed6655-e97c-5eea-9021-245625e65a55",
+        "product_name": "PHISAT-2_L1_000008004_20261008174631_20261008174634_00527D2B.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-10-08T17:46:31Z",
+        "acquisition_end": "2026-10-08T17:46:34Z",
+        "acquisition_date": "2026-10-08",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000008004_20261008174631_20261008174634_00527D2B.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "SFRG",
+      "session": "Session8",
+      "directory": "geometry/SFRG/Session8",
+      "bands": {
+        "b_0": "geometry/SFRG/Session8/bands/b_0.tiff",
+        "b_1": "geometry/SFRG/Session8/bands/b_1.tiff",
+        "b_2": "geometry/SFRG/Session8/bands/b_2.tiff",
+        "b_3": "geometry/SFRG/Session8/bands/b_3.tiff",
+        "b_4": "geometry/SFRG/Session8/bands/b_4.tiff",
+        "b_5": "geometry/SFRG/Session8/bands/b_5.tiff",
+        "b_6": "geometry/SFRG/Session8/bands/b_6.tiff",
+        "b_7": "geometry/SFRG/Session8/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000008400_20261027174724_20261027174727_1AC90A0F",
+        "site": "Sioux Falls Range",
+        "country": "USA",
+        "latitude": 43.56,
+        "longitude": -96.46,
+        "product_id": "c062fa00-759c-5014-b5ea-4f68a23b42c1",
+        "product_name": "PHISAT-2_L1_000008400_20261027174724_20261027174727_1AC90A0F.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-10-27T17:47:24Z",
+        "acquisition_end": "2026-10-27T17:47:27Z",
+        "acquisition_date": "2026-10-27",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000008400_20261027174724_20261027174727_1AC90A0F.zip"
+      }
+    },
+    {
+      "category": "geometry",
+      "location": "WWUK",
+      "session": "Session1",
+      "directory": "geometry/WWUK/Session1",
+      "bands": {
+        "b_0": "geometry/WWUK/Session1/bands/b_0.tiff",
+        "b_1": "geometry/WWUK/Session1/bands/b_1.tiff",
+        "b_2": "geometry/WWUK/Session1/bands/b_2.tiff",
+        "b_3": "geometry/WWUK/Session1/bands/b_3.tiff",
+        "b_4": "geometry/WWUK/Session1/bands/b_4.tiff",
+        "b_5": "geometry/WWUK/Session1/bands/b_5.tiff",
+        "b_6": "geometry/WWUK/Session1/bands/b_6.tiff",
+        "b_7": "geometry/WWUK/Session1/bands/b_7.tiff"
+      },
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000005768_20260613112510_20260613112514_36FD4D59",
+        "site": "Wytham Woods",
+        "country": "UK",
+        "latitude": 51.777206,
+        "longitude": -1.338494,
+        "product_id": "ef5fa43a-8695-55a2-a499-9cd86b073b69",
+        "product_name": "PHISAT-2_L1_000005768_20260613112510_20260613112514_36FD4D59.zip",
+        "product_type": "L1",
+        "acquisition_start": "2026-06-13T11:25:10Z",
+        "acquisition_end": "2026-06-13T11:25:14Z",
+        "acquisition_date": "2026-06-13",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000005768_20260613112510_20260613112514_36FD4D59.zip"
       }
     }
   ]

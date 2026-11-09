@@ -1,9 +1,4 @@
-pillow
-tifffile
-matplotlib
-rasterio
-numpy
-scikit-image
-huggingface_hub
-requests
-tqdm
+# Tested against Phi-Down 0.1.30 public API documentation.
+phidown>=0.1.30,<0.2
+pandas>=2.2,<3
+shapely>=2.0,<3
