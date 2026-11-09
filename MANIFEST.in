@@ -1,3 +1,4 @@
 include .s5cfg.example requirements.txt
 recursive-include examples *.py *.md
 recursive-include tests *.py
+recursive-include assets *.png

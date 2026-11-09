@@ -1,3 +1,5 @@
+![CalValDataset PhiSat-2 Toolkit Dashboard](assets/phisat2-toolkit-dashboard.png)
+
 # CalValDataset
 
 This repository provides PhiSat-2 Level-1 **products' references and associated metadata**, organized into **geometry**, **image_quality** and **radiometry**. A reference identifies a product on Insula by its name, catalogue ID and acquisition dates. Associated metadata includes site coordinates, expected local band paths and any curated pixel regions of interest. The repository does not contain the satellite imagery itself.
