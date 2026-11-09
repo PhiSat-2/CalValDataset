@@ -6,7 +6,7 @@ This repository provides PhiSat-2 Level-1 **products' references and associated 
 
 **Phi-Down** is the Python client used to authenticate to Insula, search its catalogue for acquisitions covering the configured site coordinates, and resolve and download product archives. Updating the local catalogues means adding newly discovered references and refreshing metadata in JSON files. It does not download imagery, process pixels or publish changes back to Insula; imagery is downloaded separately on request.
 
-This branch prepares **calvaldataset 0.1.1** as an installable Python package. It has not yet been published to PyPI. The GitHub repository remains the source of code, catalogue snapshots and examples.
+This branch prepares **phisat2-calvaldataset 0.1.1** as an installable Python package. It has not yet been published to PyPI. The GitHub repository remains the source of code, catalogue snapshots and examples.
 
 ## Repository contents
 
@@ -53,10 +53,12 @@ calval --version
 After the first PyPI release, installation will also be available as:
 
 ```powershell
-python -m pip install calvaldataset
+python -m pip install phisat2-calvaldataset
 ```
 
-Both `calval ...` and `python -m calvaldataset ...` expose the same interface.
+The distribution name for pip/PyPI is `phisat2-calvaldataset`. The Python import name remains `calvaldataset`, and both `calval ...` and `python -m calvaldataset ...` expose the same interface.
+
+If you installed the earlier development preview under the distribution name `calvaldataset`, uninstall it with `python -m pip uninstall calvaldataset` before installing this renamed distribution. Both distributions use the same Python import package.
 
 ## Quick start
 

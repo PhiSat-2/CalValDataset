@@ -33,7 +33,7 @@ def selection_options(parser):
 
 def make_parser():
     parser = argparse.ArgumentParser(prog="calval", description="Browse, download and update PhiSat-2 CalVal catalogues.")
-    parser.add_argument("--version", action="version", version=f"calvaldataset {__version__}")
+    parser.add_argument("--version", action="version", version=f"phisat2-calvaldataset {__version__}")
     common_options(parser)
     commands = parser.add_subparsers(dest="command", required=True)
     initialize = commands.add_parser("init", help="Create local catalogues, sites.csv and a credential template")

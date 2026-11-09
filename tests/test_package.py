@@ -10,6 +10,7 @@ import unittest
 import zipfile
 from contextlib import redirect_stderr, redirect_stdout
 from importlib import resources
+from importlib.metadata import version
 from pathlib import Path
 from unittest.mock import patch
 
@@ -62,6 +63,9 @@ class Downloader:
 
 
 class WorkspaceTests(unittest.TestCase):
+    def test_distribution_name_and_python_import_version(self):
+        self.assertEqual(version('phisat2-calvaldataset'), __version__)
+
     def test_installed_seed_and_idempotent_initialization(self):
         seed = resources.files("calvaldataset").joinpath("data")
         self.assertIn("YOUR_INSULA_PASSWORD", seed.joinpath(".s5cfg.example").read_text())
