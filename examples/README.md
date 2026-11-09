@@ -56,8 +56,10 @@ arguments for custom selections; see the [main README](../README.md).
 
 ## Update catalogues
 
-Add or edit rows in [sites.csv](../sites.csv), specifying coordinates, a unique
-site code and one or more categories separated by `;`.
+Copy [sites.personal.csv.example](../sites.personal.csv.example) to
+`sites.personal.csv` once, then add your coordinates, stable site codes and
+categories there. This local file is automatically added to the released list
+and is left unchanged by updates. Use `--personal-sites` for a different CSV.
 
 ```powershell
 # Preview the site list.
@@ -68,6 +70,9 @@ python examples/03_update_datasets.py --only LCFR --run
 
 # Query all sites and update the dataset.
 python examples/03_update_datasets.py --run
+
+# Add a separate personal list to the released sites.
+python examples/03_update_datasets.py --personal-sites ../private-sites.csv --run
 ```
 
 Live updates write `reports/last_update.json` and preserve existing products,

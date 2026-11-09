@@ -1,22 +1,29 @@
 # CalValDataset — PhiSat-2 catalogues
 
-This repository provides PhiSat-2 Level-1 product metadata in three JSON catalogues: **geometry**, **image_quality** and **radiometry**. Use the supplied scripts to download selected products or the entire dataset, configure new reference sites, and update the catalogues from Insula through **Phi-Down**.
+This repository provides PhiSat-2 Level-1 **products' references and associated metadata**, organized into **geometry**, **image_quality** and **radiometry**. A reference identifies a product on Insula by its name, catalogue ID and acquisition dates. Associated metadata includes site coordinates, expected local band paths and any curated pixel regions of interest. The repository does not contain the satellite imagery itself.
+
+**Phi-Down** is the Python client used to authenticate to Insula, search its catalogue for acquisitions covering the configured site coordinates, and resolve and download product archives. Updating the local catalogues means adding newly discovered references and refreshing metadata in JSON files. It does not download imagery, process pixels or publish changes back to Insula; imagery is downloaded separately on request.
 
 ## Repository contents
 
-```text
-geometry/geometry_dataset.json
-image_quality/image_quality_dataset.json
-radiometry/radiometry_dataset.json
-sites.csv                    Site names, coordinates, codes and categories
-update_datasets.py           Insula search, JSON updates and change reporting
-download_and_organize.py     Download previews and selective/full downloads
-dataset.py                   Shared metadata and file helpers
-requirements.txt
-.s5cfg.example               Insula configuration template
-README.md
-examples/                    Runnable examples with their own README
-```
+| File or directory | Detailed role |
+|---|---|
+| [geometry/geometry_dataset.json](geometry/geometry_dataset.json) | References for geometric calibration/validation: stable sessions, acquisition/site metadata, eight band destinations and optional pixel ROIs. |
+| [image_quality/image_quality_dataset.json](image_quality/image_quality_dataset.json) | References for image-quality work, with the same schema. It describes available data rather than calculating MTF or SNR. |
+| [radiometry/radiometry_dataset.json](radiometry/radiometry_dataset.json) | References for radiometric calibration/validation; it stores metadata and ROIs without applying radiometric corrections. |
+| [dataset.py](dataset.py) | Shared offline data layer: validates/reads/writes JSON and site CSVs, merges released and personal sites, validates the Insula credential file, and discovers TIFF bands and their standard destinations. |
+| [update_datasets.py](update_datasets.py) | Combines site lists, queries every candidate catalogue page through Phi-Down, verifies exact point-in-footprint coverage and adds/refreshes category entries. Preserves sessions and crops and produces the report; retrieves metadata only. |
+| [download_and_organize.py](download_and_organize.py) | Reads and filters entries by category/site/session/product or selection JSON. Previews by default; with `--download`, resolves and downloads archives through Phi-Down. `--unzip` extracts and organizes eight bands. A shared ZIP cache avoids repeated downloads. |
+| [sites.csv](sites.csv) | Released site names, coordinates, countries, stable codes and one or more categories. |
+| [sites.personal.csv.example](sites.personal.csv.example) | Header-only template for a separate user-maintained site CSV, added to the released list. The real `sites.personal.csv` is local and Git-ignored. |
+| [.s5cfg.example](.s5cfg.example) | Placeholder-only credential template. Enter your Insula username/password in a local `.s5cfg` before live searches or downloads. |
+| [requirements.txt](requirements.txt) | Python dependencies, including Phi-Down, pandas and Shapely. |
+| [examples/01_read_catalogues.py](examples/01_read_catalogues.py) | Offline executable example: prints selected product identifiers, acquisition dates and ROI counts. |
+| [examples/02_download_products.py](examples/02_download_products.py) | Previews a sample session, or delegates selective/full downloads to the real downloader with `--download`. |
+| [examples/03_update_datasets.py](examples/03_update_datasets.py) | Previews the merged site list, including personal additions, and calls the real updater only with `--run`. |
+| [LICENSE](LICENSE) | Apache-2.0 license for the repository code. |
+
+`reports/last_update.json` and `downloads/` are generated locally when needed and are excluded from Git.
 
 Each category directory initially contains only its JSON catalogue. Site/session directories are created when products are downloaded. A cloned copy works independently of the previous dataset and migration scripts.
 
@@ -28,6 +35,11 @@ Catalogue snapshot after the live Insula check on 9 November 2026:
 | image_quality | 16 | 2 |
 | radiometry | 65 | 9 |
 | Total | 100 | 16 |
+
+**Site/product entries** counts catalogue records: each is a category/site/product association. A product assigned to two categories contributes one entry in each, so the 100 entries represent **84 unique products**, not 100 separate acquisitions.
+
+**Entries with existing crops** counts the subset of those records with at least one saved pixel ROI in `bbox` (`x_min`, `y_min`, `x_max`, `y_max` and a label). These are analysis regions inside the original image, not geographic search footprints or pre-cropped images stored in the repo. `bbox: []` means no ROI has been defined yet; the product and all eight bands remain available. The 16 crop-bearing entries are already included in the 100 total entries, not added to them. The same acquisition may have crop entries in more than one category.
+
 
 The catalogues contain **84 unique products**. The 16 Baotou products appear in both image_quality and radiometry. The latest check added two Libya-1 acquisitions. Jolanda di Savoia and Lonzee remain in the site list but had no matching products at that check.
 
@@ -135,19 +147,33 @@ For a custom selection, copy the desired entries into a separate JSON file under
 
 Products are organized under `category/site_code/SessionN/`. A shared local `downloads/` cache avoids downloading the same product twice when it belongs to multiple categories. Each destination receives its own copy, and ZIP archives are retained. The downloader resolves the exact product name through the platform-files API because catalogue UUIDs may differ from downloadable file IDs.
 
-## Add or edit reference sites
+## Released and personal reference sites
 
-Edit [sites.csv](sites.csv), which contains all required site configuration. For example, append rows such as these below the existing header:
+Keep [sites.csv](sites.csv) as the released list. Copy the personal template once and add your own rows to the copy:
+
+```powershell
+Copy-Item sites.personal.csv.example sites.personal.csv
+```
 
 ```csv
 Site,Latitude,Longitude,Country,Location,Categories
-New site,45.123,9.456,Italy,NEW1,geometry
-Another site,44.123,10.456,Italy,NEW2,image_quality;radiometry
+My reference site,45.123,9.456,Italy,MY01,radiometry
+Another personal site,44.123,10.456,Italy,MY02,geometry;image_quality
 ```
 
-Do not repeat the header when appending rows. `Location` must be a unique, stable site code: it links acquisitions to a site and determines directory names. Site names must also be unique. Allowed categories are `geometry`, `image_quality` and `radiometry`; separate multiple categories with `;`.
+These coordinates illustrate the format; enter your actual site coordinates. The updater automatically adds `sites.personal.csv` beside the base list if it exists. To use another file:
 
-Sites are reference points in EPSG:4326. West longitudes and south latitudes are negative. The current configuration uses point coordinates rather than area polygons. Update a site's coordinates or categories while retaining its site code.
+```powershell
+python update_datasets.py --personal-sites ../private-sites.csv
+python update_datasets.py --personal-sites ../private-sites.csv --only MY01
+python examples/03_update_datasets.py --personal-sites ../private-sites.csv
+```
+
+The effective list contains released sites plus personal sites. A personal row for an existing code takes precedence for its name, coordinates and categories without changing the code's canonical spelling or existing session identifiers. Names shared by different codes cause an explicit conflict rather than silently dropping a site. A header-only personal CSV is valid; an explicitly requested missing file is an error.
+
+Neither CSV is written by a search or catalogue update. The personal CSV is Git-ignored, so updating the released site list does not overwrite your selections. Personal acquisitions are added to the local category JSONs; review those JSONs before committing if the additional site information should remain private. `--sites` intentionally chooses an alternative **base** list; use `--personal-sites` to **add** to the released list.
+
+Keep site codes stable when changing coordinates. Categories are `geometry`, `image_quality` and `radiometry`, separated by `;` for multiple categories. Coordinates are reference points in EPSG:4326, with west and south negative, rather than area polygons.
 
 ## Update the dataset from Insula
 
@@ -162,7 +188,7 @@ python update_datasets.py --only LCFR
 
 The update command:
 
-1. Reads the site configuration and existing JSON catalogues.
+1. Merges the released and personal site lists, then reads the existing JSON catalogues.
 2. Retrieves all candidate pages of Level-1 products from Insula.
 3. Keeps only products whose footprints cover the exact site point, including the boundary, with no buffer in the final check.
 4. Adds new acquisitions to the configured categories without duplicates or empty session directories.

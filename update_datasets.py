@@ -17,7 +17,7 @@ from shapely.geometry import Point, shape
 from shapely.geometry.base import BaseGeometry
 
 from dataset import (
-    ROOT, Site, expected_band_paths, load_catalogues, product_name, read_json, read_sites,
+    ROOT, Site, expected_band_paths, load_catalogues, product_name, read_json, read_site_lists,
     validate_config, write_json,
 )
 
@@ -297,6 +297,7 @@ def print_report(report: dict, report_path: Path) -> None:
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sites", type=Path, default=ROOT / "sites.csv")
+    parser.add_argument("--personal-sites", type=Path, help="CSV added to --sites; default: sites.personal.csv beside the base list")
     parser.add_argument("--dataset-root", type=Path, default=ROOT)
     parser.add_argument("--config", type=Path, default=ROOT / ".s5cfg")
     parser.add_argument("--only", help="Check one site name or location code")
@@ -310,7 +311,7 @@ def main(argv=None) -> int:
         LOGGER.addHandler(handler)
     report_path = args.report or args.dataset_root / "reports/last_update.json"
     try:
-        sites = read_sites(args.sites)
+        sites = read_site_lists(args.sites, args.personal_sites)
         validate_config(args.config)
         from phidown import PhiSat2Searcher
         report = update_catalogues(PhiSat2Searcher(config_file=str(args.config)), sites,
