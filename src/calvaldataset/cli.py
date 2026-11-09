@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import __version__
-from .catalogue import CATEGORIES, load_catalogues, read_json, read_sites, validate_config, write_json
+from .catalogue import CATEGORIES, load_catalogues, load_sites, read_json, validate_config, write_json
 from .download import download_entries, select_entries
 from .paths import credential_path, ensure_workspace
 
@@ -20,6 +20,8 @@ def common_options(parser, *, child=False):
                         help="Writable catalogues, sites, reports and downloads directory (or CALVAL_DATA_DIR)")
     parser.add_argument("--config", type=Path, default=default,
                         help="Insula .s5cfg file (or CALVAL_CONFIG)")
+    parser.add_argument("--personal-sites", type=Path, default=default,
+                        help="Additional personal CSV; default: sites.personal.csv beside the base list")
 
 
 def selection_options(parser):
@@ -57,10 +59,11 @@ def make_parser():
     return parser
 
 
-def resolve_site(root: Path, requested: str | None, sites_path: Path | None = None) -> str | None:
+def resolve_site(root: Path, requested: str | None, sites_path: Path | None = None,
+                 personal_path: Path | None = None) -> str | None:
     if not requested:
         return None
-    for site in read_sites(sites_path or root / "sites.csv"):
+    for site in load_sites(root, sites_path, personal_path):
         if requested.casefold() in (site.name.casefold(), site.location.casefold()):
             return site.location
     # Retained products can still be downloaded after their site leaves the search list.
@@ -100,9 +103,8 @@ def run_update(args, root: Path) -> int:
         LOGGER.addHandler(handler)
     report_path = args.report or root / "reports/last_update.json"
     try:
-        sites_path = args.sites or root / "sites.csv"
-        sites = read_sites(sites_path)
-        site_code = resolve_site(root, args.site, sites_path)
+        sites = load_sites(root, args.sites, args.personal_sites)
+        site_code = resolve_site(root, args.site, args.sites, args.personal_sites)
         searcher = make_searcher(credential_path(root, args.config))
         report = update_catalogues(searcher, sites, root, report_path, only=site_code)
         print_report(report, report_path)
@@ -122,6 +124,7 @@ def execute(args) -> int:
     if args.command == "init":
         print(f"Data directory: {root}")
         print(f"Site list: {root / 'sites.csv'}")
+        print(f"Personal sites: copy {root / 'sites.personal.csv.example'} to sites.personal.csv, then add your rows.")
         print(f"Copy {root / '.s5cfg.example'} to {root / '.s5cfg'} and enter your Insula credentials.")
         return 0
     if args.command == "update":
@@ -138,7 +141,7 @@ def execute(args) -> int:
                      for category in CATEGORIES}
         if sum(len(doc["entries"]) for doc in documents.values()) != len(source["entries"]):
             raise ValueError("Input JSON contains an unknown category")
-    site_code = resolve_site(root, args.site)
+    site_code = resolve_site(root, args.site, personal_path=args.personal_sites)
     selected = select_entries(documents, category=args.category, location=site_code,
                               session=args.session, products=args.product, allow_empty=args.command == "list")
     display_entries(selected, output_format=getattr(args, "format", "table"))

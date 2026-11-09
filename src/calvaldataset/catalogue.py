@@ -5,7 +5,8 @@ import configparser
 import csv
 import json
 import re
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
+from importlib import resources
 from pathlib import Path
 
 from .paths import default_data_dir, ensure_workspace
@@ -74,7 +75,7 @@ class Site:
         return data
 
 
-def read_sites(path: Path) -> list[Site]:
+def read_sites(path: Path, *, allow_empty: bool = False) -> list[Site]:
     with path.open(encoding="utf-8-sig", newline="") as stream:
         reader = csv.DictReader(stream)
         required = {"Site", "Latitude", "Longitude", "Country", "Location", "Categories"}
@@ -97,9 +98,51 @@ def read_sites(path: Path) -> list[Site]:
             sites.append(Site(name, latitude, longitude, (row["Country"] or "").strip(), location, categories))
             names.add(name.casefold())
             locations.add(location.casefold())
-    if not sites:
+    if not sites and not allow_empty:
         raise ValueError("Sites CSV is empty")
     return sites
+
+
+def merge_sites(base: list[Site], additional: list[Site]) -> list[Site]:
+    """Merge by site code; later definitions win without writing either file."""
+    merged = {site.location.casefold(): site for site in base}
+    for site in additional:
+        key = site.location.casefold()
+        if key in merged:
+            site = replace(site, location=merged[key].location)
+        merged[key] = site
+    names = {}
+    for site in merged.values():
+        name = site.name.casefold()
+        if name in names:
+            raise ValueError(f"Site name {site.name!r} is shared by codes {names[name]} and {site.location}; use unique names")
+        names[name] = site.location
+    return list(merged.values())
+
+
+def read_site_lists(base_path: Path, personal_path: Path | None = None) -> list[Site]:
+    """Add a private CSV to the distributed list; an absent default is optional."""
+    sites = read_sites(base_path)
+    explicit = personal_path is not None
+    personal_path = personal_path if explicit else base_path.parent / "sites.personal.csv"
+    if personal_path.resolve() == base_path.resolve():
+        raise ValueError("The personal site list must be separate from the distributed site list")
+    if explicit or personal_path.exists():
+        sites = merge_sites(sites, read_sites(personal_path, allow_empty=True))
+    return sites
+
+
+def load_sites(root: Path = ROOT, base_path: Path | None = None,
+               personal_path: Path | None = None) -> list[Site]:
+    """Combine release defaults, local sites and private additions in that order."""
+    root = ensure_workspace(root)
+    local = read_site_lists(base_path or root / "sites.csv", personal_path)
+    if base_path is not None:
+        return local
+    # New release sites also appear in workspaces created by an earlier version.
+    resource = resources.files("calvaldataset").joinpath("data", "sites.csv")
+    with resources.as_file(resource) as released_path:
+        return merge_sites(read_sites(released_path), local)
 
 
 def validate_config(path: Path) -> None:

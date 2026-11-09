@@ -26,6 +26,13 @@ to display its paths. Before downloads or live updates, copy its `.s5cfg.example
 to `.s5cfg` and enter your **Insula username and password** in `[phisat2]`.
 Use `--config` or `CALVAL_CONFIG` for credentials stored elsewhere.
 
+To keep custom sites independent of releases, copy the workspace's
+`sites.personal.csv.example` to `sites.personal.csv` and add your rows there.
+It is detected automatically. Alternatively, pass `--personal-sites path.csv`
+to the download/update examples (or the corresponding `calval` commands).
+Release, workspace and personal sites are merged; personal definitions win for
+matching codes, and updates never rewrite the personal CSV.
+
 Previewing needs no credentials. These examples complement the package regression
 tests in [tests](../tests); they are practical usage examples rather than tests.
 See the [main README](../README.md) for the full command-line interface.

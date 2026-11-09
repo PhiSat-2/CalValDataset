@@ -3,6 +3,7 @@
 *.s5cfg
 .env
 .env.*
+*.personal.csv
 !.env.example
 
 # Python / VS Code local environment

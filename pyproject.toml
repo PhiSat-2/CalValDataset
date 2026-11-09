@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "calvaldataset"
-version = "0.1.0"
+version = "0.1.1"
 description = "Browse, download and update PhiSat-2 calibration and validation datasets"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -48,4 +48,4 @@ where = ["src"]
 namespaces = false
 
 [tool.setuptools.package-data]
-calvaldataset = ["data/*/*.json", "data/sites.csv", "data/.s5cfg.example"]
+calvaldataset = ["data/*/*.json", "data/sites.csv", "data/sites.personal.csv.example", "data/.s5cfg.example"]

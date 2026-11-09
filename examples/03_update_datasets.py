@@ -2,7 +2,7 @@
 """Preview configured sites; add --run for a live update, optionally with --only LCFR."""
 import argparse
 from pathlib import Path
-from calvaldataset import ensure_workspace, read_sites
+from calvaldataset import ensure_workspace, load_sites
 from calvaldataset.cli import main as calval_main
 
 
@@ -12,9 +12,10 @@ def main():
     parser.add_argument('--run', action='store_true')
     parser.add_argument('--data-dir', type=Path)
     parser.add_argument('--config')
+    parser.add_argument('--personal-sites', type=Path)
     args = parser.parse_args()
     root = ensure_workspace(args.data_dir)
-    sites = [s for s in read_sites(root / 'sites.csv') if not args.only or args.only.casefold() in (s.name.casefold(), s.location.casefold())]
+    sites = [s for s in load_sites(root, personal_path=args.personal_sites) if not args.only or args.only.casefold() in (s.name.casefold(), s.location.casefold())]
     if not sites:
         parser.error('Unknown site name or code')
     if not args.run:
@@ -26,6 +27,8 @@ def main():
     command.extend(['--data-dir', str(root)])
     if args.config:
         command.extend(['--config', args.config])
+    if args.personal_sites is not None:
+        command.extend(['--personal-sites', str(args.personal_sites)])
     return calval_main(command)
 
 

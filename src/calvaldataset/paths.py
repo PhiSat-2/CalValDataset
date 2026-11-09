@@ -21,7 +21,7 @@ def ensure_workspace(root: Path | None = None) -> Path:
         raise ValueError("Choose a data directory outside the installed calvaldataset package")
     seed = resources.files("calvaldataset").joinpath("data")
     paths = [f"{c}/{c}_dataset.json" for c in ("geometry", "image_quality", "radiometry")]
-    paths += ["sites.csv", ".s5cfg.example"]
+    paths += ["sites.csv", "sites.personal.csv.example", ".s5cfg.example"]
     for relative in paths:
         destination = root / relative
         if not destination.exists():

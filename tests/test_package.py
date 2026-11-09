@@ -15,8 +15,8 @@ from unittest.mock import patch
 
 import pandas as pd
 
-from calvaldataset import CATEGORIES, Site, __version__, ensure_workspace, load_catalogues
-from calvaldataset.catalogue import expected_band_paths, read_json, read_sites, write_json
+from calvaldataset import CATEGORIES, Site, __version__, ensure_workspace, load_catalogues, load_sites
+from calvaldataset.catalogue import expected_band_paths, read_json, read_sites, read_site_lists, write_json
 from calvaldataset.cli import main, make_parser
 from calvaldataset.download import download_entries, extract_archive
 from calvaldataset.paths import credential_path
@@ -178,6 +178,63 @@ class SearchTests(unittest.TestCase):
                 return pd.DataFrame(self.products)
         with self.assertRaisesRegex(RuntimeError, "Repeated catalogue page"):
             search_one_site(Repeated(), SITE, page_size=1)
+
+
+class PersonalSiteTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = ensure_workspace(Path(self.temp.name))
+        self.personal = self.root / 'sites.personal.csv'
+        self.header = 'Site,Latitude,Longitude,Country,Location,Categories\n'
+
+    def test_additions_and_overrides_preserve_both_files(self):
+        self.personal.write_text(self.header + 'Personal,1,1,Example,MY01,radiometry\nMy La Crau,43.5,4.8,France,lcfr,geometry\n', encoding='utf-8')
+        before = (self.root / 'sites.csv').read_bytes(), self.personal.read_bytes()
+        sites = load_sites(self.root)
+        self.assertEqual(len(sites), 18)
+        custom = next(s for s in sites if s.location == 'LCFR')
+        self.assertEqual(custom.name, 'My La Crau')
+        self.assertEqual(custom.categories, ('geometry',))
+        ensure_workspace(self.root)
+        self.assertEqual(((self.root / 'sites.csv').read_bytes(), self.personal.read_bytes()), before)
+
+    def test_empty_default_and_missing_explicit_files(self):
+        self.assertEqual(len(load_sites(self.root)), 17)
+        self.personal.write_text(self.header, encoding='utf-8')
+        self.assertEqual(len(load_sites(self.root)), 17)
+        with self.assertRaises(FileNotFoundError):
+            load_sites(self.root, personal_path=self.root / 'missing.csv')
+
+    def test_name_conflict_is_reported(self):
+        self.personal.write_text(self.header + 'La Crau,1,1,Example,DIFFERENT,radiometry\n', encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'shared by codes'):
+            load_sites(self.root)
+
+    def test_release_additions_reach_older_workspaces(self):
+        base = self.root / 'sites.csv'
+        lines = base.read_text(encoding='utf-8-sig').splitlines()
+        base.write_text('\n'.join([lines[0], *lines[2:]]) + '\n', encoding='utf-8')
+        self.personal.write_text(self.header + 'Personal,1,1,Example,MY01,radiometry\n', encoding='utf-8')
+        before = base.read_bytes(), self.personal.read_bytes()
+        self.assertEqual(len(read_site_lists(base)), 17)
+        self.assertEqual(len(load_sites(self.root)), 18)
+        self.assertEqual((base.read_bytes(), self.personal.read_bytes()), before)
+
+    def test_cli_update_and_list_personal_site(self):
+        self.personal.write_text(self.header + 'Personal,1,1,Example,MY01,radiometry\n', encoding='utf-8')
+        before = self.personal.read_bytes()
+        with patch('calvaldataset.cli.make_searcher', return_value=Catalogue()), redirect_stdout(io.StringIO()):
+            code = main(['update', '--site', 'MY01', '--data-dir', str(self.root)])
+        self.assertEqual(code, 0)
+        out = io.StringIO()
+        with redirect_stdout(out):
+            code = main(['list', '--site', 'MY01', '--format', 'json', '--data-dir', str(self.root)])
+        self.assertEqual(code, 0)
+        entries = json.loads(out.getvalue())['entries']
+        self.assertEqual(len(entries), 1)
+        self.assertEqual(entries[0]['location'], 'MY01')
+        self.assertEqual(self.personal.read_bytes(), before)
 
 
 class CLITests(unittest.TestCase):

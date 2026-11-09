@@ -15,13 +15,14 @@ def main():
     parser.add_argument('--unzip', action='store_true')
     parser.add_argument('--data-dir')
     parser.add_argument('--config')
+    parser.add_argument('--personal-sites')
     args = parser.parse_args()
     command = ['download', '--all'] if args.all else ['download', '--category', args.category, '--site', args.location, '--session', args.session]
     if not args.download:
         command.append('--dry-run')
     if args.unzip:
         command.append('--unzip')
-    for option in ('data-dir', 'config'):
+    for option in ('data-dir', 'config', 'personal-sites'):
         value = getattr(args, option.replace('-', '_'))
         if value:
             command.extend(['--' + option, value])
