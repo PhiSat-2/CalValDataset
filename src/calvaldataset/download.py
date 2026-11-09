@@ -2,13 +2,12 @@
 """Plan or download CalVal products with Phi-Down into category/site/session."""
 from __future__ import annotations
 
-import argparse
 import os
 import shutil
 import zipfile
 from pathlib import Path
 
-from dataset import (
+from .catalogue import (
     CATEGORIES, ROOT, discover_bands, entry_directory, expected_band_paths, load_catalogues,
     product_name, read_json, validate_config, write_json,
 )
@@ -89,7 +88,7 @@ def download_entries(entries: list[dict], root: Path, searcher, *, unzip: bool =
 
 def select_entries(documents: dict, *, category: str | None = None,
                    location: str | None = None, session: str | None = None,
-                   products: list[str] | None = None) -> list[dict]:
+                   products: list[str] | None = None, allow_empty: bool = False) -> list[dict]:
     requested = {product_name(name) for name in products or []}
     selected = [entry for cat, doc in documents.items() for entry in doc["entries"]
                 if (not category or cat == category)
@@ -99,52 +98,6 @@ def select_entries(documents: dict, *, category: str | None = None,
     missing = requested - {product_name(e["metadata"]["session_id"]) for e in selected}
     if missing:
         raise ValueError(f"Products not found with these filters: {', '.join(sorted(missing))}")
-    if not selected:
+    if not selected and not allow_empty:
         raise ValueError("No products match the requested filters")
     return selected
-
-
-def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dataset-root", type=Path, default=ROOT)
-    parser.add_argument("--config", type=Path, default=ROOT / ".s5cfg")
-    parser.add_argument("--category", choices=CATEGORIES)
-    parser.add_argument("--location", help="Location code, e.g. BAOT")
-    parser.add_argument("--session", help="Session label, e.g. Session1")
-    parser.add_argument("--json", type=Path, help="Read products from one catalogue or an edited JSON selection")
-    parser.add_argument("--product", action="append", help="Exact product name, with or without .zip; repeat for multiple products")
-    parser.add_argument("--download", action="store_true", help="Download imagery; default only prints a plan")
-    parser.add_argument("--unzip", action="store_true", help="Extract ZIPs and organize TIFFs at the band paths declared in the JSON")
-    args = parser.parse_args(argv)
-    documents = load_catalogues(args.dataset_root)
-    if args.json:
-        source = read_json(args.json)
-        documents = {category: {"entries": [e for e in source["entries"] if e["category"] == category]}
-                     for category in CATEGORIES}
-        if sum(len(doc["entries"]) for doc in documents.values()) != len(source["entries"]):
-            parser.error("Input JSON contains an unknown category")
-    try:
-        selected = select_entries(documents, category=args.category, location=args.location,
-                                  session=args.session, products=args.product)
-    except ValueError as exc:
-        parser.error(str(exc))
-    for entry in selected:
-        print(f"{entry['category']}/{entry['location']}/{entry['session']}: {entry['metadata']['session_id']}")
-    print(f"Selected: {len(selected)} category entries, {len({e['metadata']['session_id'] for e in selected})} unique products")
-    if not args.download or not selected:
-        return 0
-    from phidown import PhiSat2Searcher
-    validate_config(args.config)
-    failures = download_entries(selected, args.dataset_root, PhiSat2Searcher(config_file=str(args.config)), unzip=args.unzip)
-    if args.unzip:
-        if args.json:
-            # Update only the supplied selection, never replace full catalogues with a subset.
-            write_json(args.json, source)
-        else:
-            for category, doc in documents.items():
-                write_json(args.dataset_root / category / f"{category}_dataset.json", doc)
-    return 1 if failures else 0
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

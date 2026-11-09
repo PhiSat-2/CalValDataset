@@ -1,39 +1,33 @@
-#!/usr/bin/env python3
-"""Show or run a catalogue update using the sites configured in sites.csv.
-
-Run from the repository root:
-    python examples/03_update_datasets.py
-    python examples/03_update_datasets.py --only LCFR --run
-    python examples/03_update_datasets.py --run
-
-Add sites and categories to sites.csv and enter Insula credentials in .s5cfg
-before running a live update. No imagery is downloaded by an update.
-"""
+﻿#!/usr/bin/env python3
+"""Preview configured sites; add --run for a live update, optionally with --only LCFR."""
 import argparse
-import sys
 from pathlib import Path
+from calvaldataset import ensure_workspace, read_sites
+from calvaldataset.cli import main as calval_main
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from dataset import ROOT, read_sites
 
-
-def main(argv=None):
+def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--only", help="Check one site by name or location code")
-    parser.add_argument("--run", action="store_true", help="Connect to Insula and update the JSON catalogues")
-    args = parser.parse_args(argv)
-    sites = read_sites(ROOT / "sites.csv")
-    selected = [site for site in sites if not args.only or args.only.casefold() in (site.name.casefold(), site.location.casefold())]
-    if not selected:
-        parser.error(f"Unknown site or location code: {args.only}")
-    for site in selected:
-        print(f"{site.location}: {site.name} ({site.latitude}, {site.longitude}) -> {', '.join(site.categories)}")
+    parser.add_argument('--only')
+    parser.add_argument('--run', action='store_true')
+    parser.add_argument('--data-dir', type=Path)
+    parser.add_argument('--config')
+    args = parser.parse_args()
+    root = ensure_workspace(args.data_dir)
+    sites = [s for s in read_sites(root / 'sites.csv') if not args.only or args.only.casefold() in (s.name.casefold(), s.location.casefold())]
+    if not sites:
+        parser.error('Unknown site name or code')
     if not args.run:
-        print("\nPreview only. Add --run to query Insula, update the catalogues and write the report.")
+        for site in sites:
+            print(f'{site.location}: {site.name} -> {", ".join(site.categories)}')
+        print('Preview only. Add --run to query Insula and update the catalogues.')
         return 0
-    from update_datasets import main as update_main
-    return update_main(["--only", args.only] if args.only else [])
+    command = ['update', '--site', args.only] if args.only else ['update', '--all']
+    command.extend(['--data-dir', str(root)])
+    if args.config:
+        command.extend(['--config', args.config])
+    return calval_main(command)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     raise SystemExit(main())

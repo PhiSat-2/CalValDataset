@@ -2,7 +2,6 @@
 """Check every configured site on Insula, update CalVal JSON files and report changes."""
 from __future__ import annotations
 
-import argparse
 import copy
 import json
 import logging
@@ -16,7 +15,7 @@ from shapely import wkt as shapely_wkt
 from shapely.geometry import Point, shape
 from shapely.geometry.base import BaseGeometry
 
-from dataset import (
+from .catalogue import (
     ROOT, Site, expected_band_paths, load_catalogues, product_name, read_json, read_sites,
     validate_config, write_json,
 )
@@ -292,42 +291,3 @@ def print_report(report: dict, report_path: Path) -> None:
     print(f"Sites: {len(changes['added'])} added, {len(changes['changed'])} modified, "
           f"{len(changes['removed_from_site_list'])} removed from the search list.")
     print(f"Report: {report_path}")
-
-
-def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--sites", type=Path, default=ROOT / "sites.csv")
-    parser.add_argument("--dataset-root", type=Path, default=ROOT)
-    parser.add_argument("--config", type=Path, default=ROOT / ".s5cfg")
-    parser.add_argument("--only", help="Check one site name or location code")
-    parser.add_argument("--report", type=Path, help="Default: <dataset-root>/reports/last_update.json")
-    args = parser.parse_args(argv)
-    LOGGER.setLevel(logging.INFO)
-    LOGGER.propagate = False
-    if not LOGGER.handlers:
-        handler = logging.StreamHandler()
-        handler.setFormatter(logging.Formatter("%(message)s"))
-        LOGGER.addHandler(handler)
-    report_path = args.report or args.dataset_root / "reports/last_update.json"
-    try:
-        sites = read_sites(args.sites)
-        validate_config(args.config)
-        from phidown import PhiSat2Searcher
-        report = update_catalogues(PhiSat2Searcher(config_file=str(args.config)), sites,
-                                   args.dataset_root, report_path, only=args.only)
-        print_report(report, report_path)
-        return 1 if report["failed_sites"] else 0
-    except Exception as exc:
-        # A failed setup must not erase the baseline used to detect site-list changes.
-        try:
-            baseline = read_json(report_path).get("sites_configuration", {}) if report_path.is_file() else {}
-        except (ValueError, OSError):
-            baseline = {}
-        write_json(report_path, {"status": "ERROR", "checked_at_utc": datetime.now(timezone.utc).isoformat(),
-                                "sites_configuration": baseline, "error": f"{type(exc).__name__}: {exc}"})
-        LOGGER.error("Update failed: %s. Report: %s", exc, report_path)
-        return 2
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())

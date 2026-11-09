@@ -1,4 +1,4 @@
-﻿"""Shared metadata helpers for the CalVal JSON catalogues (no imagery dependencies)."""
+"""Shared metadata helpers for the CalVal JSON catalogues (no imagery dependencies)."""
 from __future__ import annotations
 
 import configparser
@@ -8,7 +8,9 @@ import re
 from dataclasses import asdict, dataclass
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+from .paths import default_data_dir, ensure_workspace
+
+ROOT = default_data_dir()
 CATEGORIES = ("geometry", "image_quality", "radiometry")
 
 
@@ -102,7 +104,7 @@ def read_sites(path: Path) -> list[Site]:
 
 def validate_config(path: Path) -> None:
     if not path.is_file():
-        raise FileNotFoundError(f"Missing {path}; copy .s5cfg.example to .s5cfg and set Insula credentials")
+        raise FileNotFoundError(f"Missing {path}; run calval init, then copy its .s5cfg.example to .s5cfg and enter your Insula credentials")
     config = configparser.ConfigParser(interpolation=None)
     config.read(path, encoding="utf-8-sig")
     if "phisat2" not in config:

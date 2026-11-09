@@ -1,76 +1,70 @@
-# CalValDataset — PhiSat-2 catalogues
+﻿# CalValDataset
 
-This repository provides PhiSat-2 Level-1 product metadata in three JSON catalogues: **geometry**, **image_quality** and **radiometry**. Use the supplied scripts to download selected products or the entire dataset, configure new reference sites, and update the catalogues from Insula through **Phi-Down**.
+Browse, download and update PhiSat-2 Level-1 calibration and validation datasets from Insula through **Phi-Down**. Products are grouped into **geometry**, **image_quality** and **radiometry**.
 
-## Repository contents
+This branch prepares **calvaldataset 0.1.0** as an installable Python package. It has not yet been published to PyPI. The GitHub repository remains the source of code, catalogue snapshots and examples.
 
-```text
-geometry/geometry_dataset.json
-image_quality/image_quality_dataset.json
-radiometry/radiometry_dataset.json
-sites.csv                    Site names, coordinates, codes and categories
-update_datasets.py           Insula search, JSON updates and change reporting
-download_and_organize.py     Download previews and selective/full downloads
-dataset.py                   Shared metadata and file helpers
-requirements.txt
-.s5cfg.example               Insula configuration template
-README.md
-examples/                    Runnable examples with their own README
-```
+## Install
 
-Each category directory initially contains only its JSON catalogue. Site/session directories are created when products are downloaded. A cloned copy works independently of the previous dataset and migration scripts.
-
-Catalogue snapshot after the live Insula check on 9 November 2026:
-
-| Category | Site/product entries | Entries with existing crops |
-|---|---:|---:|
-| geometry | 19 | 5 |
-| image_quality | 16 | 2 |
-| radiometry | 65 | 9 |
-| Total | 100 | 16 |
-
-The catalogues contain **84 unique products**. The 16 Baotou products appear in both image_quality and radiometry. The latest check added two Libya-1 acquisitions. Jolanda di Savoia and Lonzee remain in the site list but had no matching products at that check.
-
-## Available products by site
-
-Availability at the live Insula check on **9 November 2026**, as recorded in the JSON catalogues. Each product is counted once per site, including products assigned to multiple categories. Sites with no matching products are included with a count of zero.
-
-| Site | Code | Country | Categories | Available L1 products |
-|---|---|---|---|---:|
-| Railroad Valley Playa | RVUS | USA | radiometry | 3 |
-| La Crau | LCFR | France | radiometry | 5 |
-| Gobabeb | GHNA | Namibia | radiometry | 11 |
-| Baotou | BAOT | China | image_quality, radiometry | 16 |
-| Jarvselja | JAES | Estonia | geometry | 2 |
-| Jolanda di Savoia | JSIT | Italy | radiometry | 0 |
-| Lonzee | LOBE | Belgium | radiometry | 0 |
-| Wytham Woods | WWUK | UK | geometry | 1 |
-| Princess Elisabeth | PEAN | Antarctica | radiometry | 5 |
-| Libya-4 | LYB4 | Libya | radiometry | 5 |
-| Libya-1 | LYB1 | Libya | radiometry | 6 |
-| Algeria-3 | ALG3 | Algeria | radiometry | 5 |
-| Shadnagar | SHAD | India | radiometry | 9 |
-| Piedmont | PIED | Italy | geometry | 1 |
-| Grosseto | GROS | Italy | geometry | 1 |
-| Pueblo Range | PRING | USA | geometry | 6 |
-| Sioux Falls Range | SFRG | USA | geometry | 8 |
-| **Total unique products across the dataset** | | | | **84** |
-
-Run `python update_datasets.py` to check for newer acquisitions; this table documents the dated snapshot above.
-
-## Installation and Insula credentials
-
-Use Python 3.11 or later. From the repository root on Windows:
+Python 3.11 or later is required. Install this branch directly:
 
 ```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-
-# Run this only if you do not already have a configured .s5cfg file.
-Copy-Item .s5cfg.example .s5cfg
+python -m pip install "git+https://github.com/lorenzopapa5/CalValDataset.git@feature/pypi-package"
 ```
 
-**You must enter your own Insula username and password in the local `.s5cfg` file before downloading products or querying Insula.** Place the file in the repository root and fill in the `[phisat2]` section:
+For local development, clone the branch and install from its root:
+
+```powershell
+git clone --branch feature/pypi-package https://github.com/lorenzopapa5/CalValDataset.git
+cd CalValDataset
+python -m pip install .
+calval --version
+```
+
+After the first PyPI release, installation will also be available as:
+
+```powershell
+python -m pip install calvaldataset
+```
+
+Both `calval ...` and `python -m calvaldataset ...` expose the same interface.
+
+## Quick start
+
+```powershell
+# Browse local catalogues without authentication or network access.
+calval list --category radiometry
+calval list --site LCFR
+
+# Download and extract the products for La Crau.
+calval download --site LCFR --unzip
+
+# Search Insula for new acquisitions at La Crau.
+calval update --site LCFR
+
+# Check all configured sites.
+calval update --all
+```
+
+Downloads and live updates require the Insula credentials described below. Listing products does not require credentials.
+
+## Writable data and credentials
+
+The package includes an initial snapshot of the three JSON catalogues, the site list and a credential template. These installed resources are immutable defaults. On first use, missing files are copied into a writable user-data directory; existing catalogues, crops, credentials and custom sites are never overwritten by initialization or a package upgrade.
+
+The default location follows the operating system's user-data convention, such as `%LOCALAPPDATA%/calvaldataset` on Windows and `~/.local/share/calvaldataset` on Linux. Run `calval init` to display the actual paths.
+
+Choose a specific directory with `--data-dir` (before or after the subcommand), or set the `CALVAL_DATA_DIR` environment variable:
+
+```powershell
+calval init --data-dir ./calval-data
+```
+
+**Enter your own Insula username and password in a local `.s5cfg` file before downloading or updating.** Copy the template produced by initialization and edit the copy:
+
+```powershell
+Copy-Item ./calval-data/.s5cfg.example ./calval-data/.s5cfg
+```
 
 ```ini
 [phisat2]
@@ -78,66 +72,53 @@ username = YOUR_INSULA_USERNAME
 password = YOUR_INSULA_PASSWORD
 ```
 
-Replace the placeholders with your actual Insula credentials. Preserve any existing configuration settings. The local `.s5cfg` file is excluded from Git and must not be committed or shared. Catalogue previews do not require credentials.
+Replace the placeholders with your credentials. Keep the file private. It is excluded from Git and is never included in the package.
 
-The commands below use `python`: activate your virtual environment or replace it with `.\.venv\Scripts\python.exe`. On Linux/macOS, use the corresponding virtual environment interpreter. Both main scripts accept `--config` to use a credential file at another path.
-
-## Read catalogues and select products
-
-Every catalogue contains an `entries` list. Each entry provides `category`, `location`, `session`, `directory`, `bands`, `bbox` and `metadata`. The complete product identifier is stored in `metadata.session_id`; metadata also includes the catalogue ID, site coordinates and acquisition timestamps in UTC.
-
-Read a JSON file directly:
-
-```python
-import json
-from pathlib import Path
-
-path = Path("radiometry/radiometry_dataset.json")
-entries = json.loads(path.read_text(encoding="utf-8"))["entries"]
-for entry in entries:
-    print(entry["location"], entry["session"], entry["metadata"]["session_id"])
-```
-
-Without `--download`, the downloader only displays the selection:
+Credential lookup uses, in order: `--config`, `CALVAL_CONFIG`, `.s5cfg` in the selected data directory, then `.s5cfg` in the current working directory. For example:
 
 ```powershell
-# Preview all products.
-python download_and_organize.py
-
-# Filter by category, site code or session.
-python download_and_organize.py --category radiometry
-python download_and_organize.py --location LCFR
-python download_and_organize.py --category image_quality --location BAOT --session Session1
-
-# Read products from a particular JSON catalogue.
-python download_and_organize.py --json radiometry/radiometry_dataset.json
+calval download --site LCFR --unzip --data-dir ./calval-data
+calval update --site LCFR --data-dir ./calval-data
+calval update --all --config ./private/.s5cfg
 ```
 
-## Download products
+A workspace has this structure:
 
-Add `--download` to download the selection. Add `--unzip` to extract ZIP archives and organize the TIFF bands at the standard local paths already declared in the JSON:
+```text
+calval-data/
+  geometry/geometry_dataset.json
+  image_quality/image_quality_dataset.json
+  radiometry/radiometry_dataset.json
+  sites.csv
+  .s5cfg.example
+  .s5cfg                      User-created credentials
+  downloads/                  Shared ZIP cache, created at download time
+  reports/last_update.json    Created by catalogue updates
+```
+
+Session directories appear only when imagery is downloaded. Multiple workspaces can coexist using different `--data-dir` values.
+
+## Product selection and downloads
 
 ```powershell
-# Download and extract the entire dataset.
-python download_and_organize.py --download --unzip
-
-# Download one session.
-python download_and_organize.py --category image_quality --location BAOT --session Session1 --download --unzip
-
-# Download all products from one JSON catalogue.
-python download_and_organize.py --json radiometry/radiometry_dataset.json --download
-
-# Select an exact product name; repeat --product to select multiple products.
-python download_and_organize.py --product PHISAT-2_L1_000001340_20241007034054_20241007034103_E04D392C --download
+calval list --category image_quality --site BAOT --session Session1
+calval list --site LCFR --format json
+calval download --site LCFR --dry-run
+calval download --category image_quality --site BAOT --session Session1 --unzip
+calval download --all --unzip
 ```
 
-For a custom selection, copy the desired entries into a separate JSON file under `entries` and pass `--json selection.json`. If band paths are indexed, only that supplied JSON file is updated; the complete catalogues are preserved.
+Use an exact name with `--product`, repeating the option for several products. Names may include or omit `.zip`. `--site` accepts a site code or full name; `--location` remains an alias.
 
-Products are organized under `category/site_code/SessionN/`. A shared local `downloads/` cache avoids downloading the same product twice when it belongs to multiple categories. Each destination receives its own copy, and ZIP archives are retained. The downloader resolves the exact product name through the platform-files API because catalogue UUIDs may differ from downloadable file IDs.
+For an edited selection, create a JSON file containing the desired `entries` and pass `calval download --json selection.json --unzip`. Only that selection file is updated if its band mappings need updating; it never replaces the complete catalogues.
 
-## Add or edit reference sites
+Products are organized under `category/site_code/SessionN/` in the workspace. Each entry declares eight relative paths, `bands/b_0.tiff` through `bands/b_7.tiff`. With `--unzip`, the downloader discovers the original TIFFs and exposes them at those standard paths, preserving the original archive and extracted package. Hard links avoid duplicate raster storage where supported; a copy is used otherwise. Missing or ambiguous bands generate an error.
 
-Edit [sites.csv](sites.csv), which contains all required site configuration. For example, append rows such as these below the existing header:
+A shared ZIP cache prevents repeated network downloads for products assigned to multiple categories. The downloader resolves names through the platform-files API rather than assuming catalogue UUIDs are downloadable file IDs.
+
+## Add sites and update catalogues
+
+Edit `sites.csv` in the workspace printed by `calval init`. Append rows below its existing header:
 
 ```csv
 Site,Latitude,Longitude,Country,Location,Categories
@@ -145,75 +126,67 @@ New site,45.123,9.456,Italy,NEW1,geometry
 Another site,44.123,10.456,Italy,NEW2,image_quality;radiometry
 ```
 
-Do not repeat the header when appending rows. `Location` must be a unique, stable site code: it links acquisitions to a site and determines directory names. Site names must also be unique. Allowed categories are `geometry`, `image_quality` and `radiometry`; separate multiple categories with `;`.
-
-Sites are reference points in EPSG:4326. West longitudes and south latitudes are negative. The current configuration uses point coordinates rather than area polygons. Update a site's coordinates or categories while retaining its site code.
-
-## Update the dataset from Insula
+Site names and location codes must be unique. Keep location codes stable when changing coordinates. Categories are `geometry`, `image_quality` and `radiometry`, separated by `;` when a site belongs to several categories. Coordinates are reference points in EPSG:4326; west and south are negative.
 
 ```powershell
-# Search every configured site, update the catalogues and write a report.
-python update_datasets.py
-
-# Search one site by name or location code.
-python update_datasets.py --only "La Crau"
-python update_datasets.py --only LCFR
+calval update --site NEW1
+calval update --all
+calval update --all --sites ./alternative-sites.csv
 ```
 
-The update command:
+The updater searches all candidate pages and keeps products whose footprints cover the exact reference point, including its boundary and with no buffer in the final check. New products are added to the configured category JSON files. Crop definitions, band destinations and existing session identifiers are preserved. New sessions are appended even if their acquisition dates are earlier.
 
-1. Reads the site configuration and existing JSON catalogues.
-2. Retrieves all candidate pages of Level-1 products from Insula.
-3. Keeps only products whose footprints cover the exact site point, including the boundary, with no buffer in the final check.
-4. Adds new acquisitions to the configured categories without duplicates or empty session directories.
-5. Refreshes available catalogue metadata while preserving existing crops, band paths and session identifiers.
-6. Prints a short summary and saves `reports/last_update.json`.
+Every product has a numeric `metadata.resolution` of **4.75 metres**. An unanalysed product has `"bbox": []`; crop availability is independent of its eight band paths and does not affect downloads. The original 16 crops remain intact. This package stores crop definitions and does not perform image-quality analysis or alter raster pixel values.
 
-Run the command after adding or editing sites, or whenever you want to check existing sites for new acquisitions. Updates happen automatically during command execution. Periodic execution can be scheduled separately if needed.
+Each update prints a short summary and writes `reports/last_update.json`, with status `UPDATED`, `NO_UPDATES`, `PARTIAL_ERROR` or `ERROR`. The report records new products, metadata and site-list changes, search errors and previously catalogued products no longer returned by Insula. Use `--report path.json` to choose a different report.
 
-The report records `UPDATED`, `NO_UPDATES`, `PARTIAL_ERROR` or `ERROR`, together with new unique products, category entries added, metadata changes, site-list changes and the result for each checked site. The first run establishes the site-list baseline; subsequent runs compare against the previous report. The report is replaced on each run. Use `--report path.json` to choose another location.
+An unsuccessful search is distinguished from a verified zero-result search. Existing products are retained, including after a site or category is removed from the search list. Updates run when requested by the command; scheduling periodic execution is a separate operation.
 
-Zero matching products are distinguished from a failed search. Errors preserve existing data and do not block the other sites. Previously catalogued products that are no longer returned by Insula are retained and listed in `previous_products_not_returned`. Removing a site or category from the configuration stops future searches for it without deleting existing catalogue entries.
+## Included catalogue snapshot
 
-New sessions are appended after existing sessions, including acquisitions with earlier dates. `SessionN` is a stable identifier rather than a chronological ranking.
+The package ships **84 unique products** in 100 category entries, based on the Insula check of **9 November 2026**. Baotou products belong to two categories. Local updates can add further products independently of package releases.
 
-## Crop and band metadata
+| Site | Code | Categories | Unique L1 products |
+|---|---|---|---:|
+| Railroad Valley Playa | RVUS | radiometry | 3 |
+| La Crau | LCFR | radiometry | 5 |
+| Gobabeb | GHNA | radiometry | 11 |
+| Baotou | BAOT | image_quality, radiometry | 16 |
+| Jarvselja | JAES | geometry | 2 |
+| Jolanda di Savoia | JSIT | radiometry | 0 |
+| Lonzee | LOBE | radiometry | 0 |
+| Wytham Woods | WWUK | geometry | 1 |
+| Princess Elisabeth | PEAN | radiometry | 5 |
+| Libya-4 | LYB4 | radiometry | 5 |
+| Libya-1 | LYB1 | radiometry | 6 |
+| Algeria-3 | ALG3 | radiometry | 5 |
+| Shadnagar | SHAD | radiometry | 9 |
+| Piedmont | PIED | geometry | 1 |
+| Grosseto | GROS | geometry | 1 |
+| Pueblo Range | PRING | geometry | 6 |
+| Sioux Falls Range | SFRG | geometry | 8 |
 
-All **16 original crops** retain their pixel coordinates and labels in `bbox`. Unanalysed products have `"bbox": []`. Downloads do not depend on crop values, so an undefined crop does not block the workflow.
+## Python API and examples
 
-To record a measured region of interest, edit only the matching entry's `bbox`. This example illustrates the format; replace its coordinates with values verified on the actual image:
+```python
+from calvaldataset import ensure_workspace, load_catalogues
 
-```json
-"bbox": [
-  {"x_min": 100, "y_min": 200, "x_max": 300, "y_max": 400, "label": "Measured ROI"}
-]
+root = ensure_workspace()  # Or ensure_workspace(Path("./calval-data"))
+catalogues = load_catalogues(root)
+entries = catalogues["radiometry"]["entries"]
 ```
 
-Every product has one `bands` mapping with keys `b_0` through `b_7`, whether or not a crop is defined. Paths are declared in advance as `category/site_code/SessionN/bands/b_0.tiff` through `b_7.tiff`, so they do not depend on the original filenames or an available bbox. These are expected local destinations; files become available after running the downloader with `--download --unzip`. The redundant `legacy_bands` mapping has been removed.
+The [examples](examples/README.md) provide runnable scripts for reading metadata, selective/full downloads and updates. They use the installed package rather than modifying the import search path.
 
-After extraction, the downloader identifies the original TIFFs and creates the standard band files while preserving the extracted package and original ZIP. It uses hard links where supported and copies otherwise. Missing or ambiguous bands produce an explicit error. Standardization changes local filenames only, preserving raster contents and crop coordinates.
-
-The project stores crop definitions and does not perform image cropping or image-quality analysis. Every product has a numeric `metadata.resolution` value of `4.75`, expressed in metres, matching the nominal PhiSat-2 resolution used by this dataset. New acquisitions receive the same value. Original TIFF filenames and raster dimensions are not guessed. Updates never transfer a crop to another acquisition. Historical information is retained in the existing product metadata; numeric latitude/longitude values refer to the current search coordinates.
-
-## Runnable examples
-
-The former unit-test folder has been replaced by [examples](examples/README.md), containing practical scripts that call the actual workflow code:
+## Build and verify
 
 ```powershell
-# Read local catalogues and display selected metadata.
-python examples/01_read_catalogues.py --category radiometry --location LYB1
-
-# Preview the default sample session, then download it if desired.
-python examples/02_download_products.py
-python examples/02_download_products.py --download --unzip
-
-# Download the complete dataset.
-python examples/02_download_products.py --all --download --unzip
-
-# Preview configured sites, then run a live update if desired.
-python examples/03_update_datasets.py
-python examples/03_update_datasets.py --only LCFR --run
-python examples/03_update_datasets.py --run
+python -m pip install ".[dev]"
+python -m build
+python -m twine check dist/*
+python -m unittest discover -s tests -v
 ```
 
-Reading and previewing work without credentials. Actual downloads and live updates require the Insula credentials configured in `.s5cfg`. The examples use the main modules directly and are intended as executable usage guides rather than an automated test suite.
+The wheel and source archive are written to `dist/`. The regression suite covers packaged seed data, writable workspace initialization, CLI selection, credential errors, update idempotence, crop preservation, pagination, download caching and band organization with simulated archives. It does not download satellite imagery. GitHub Actions repeats package checks on Windows and Linux with Python 3.11 and 3.12.
+
+PyPI publication and a merge into `main` are separate release steps. No upload is performed by the build or the CI workflow.

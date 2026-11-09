@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "calvaldataset"
+version = "0.1.0"
+description = "Browse, download and update PhiSat-2 calibration and validation datasets"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{name = "Lorenzo Papa"}]
+keywords = ["phisat-2", "calibration", "validation", "earth-observation", "insula"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+dependencies = [
+    "phidown>=0.1.30,<0.2",
+    "pandas>=2.2,<3",
+    "shapely>=2,<3",
+    "platformdirs>=4,<5",
+]
+
+[project.optional-dependencies]
+dev = ["build>=1.2", "twine>=6"]
+
+[project.scripts]
+calval = "calvaldataset.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/lorenzopapa5/CalValDataset"
+Repository = "https://github.com/lorenzopapa5/CalValDataset"
+Issues = "https://github.com/lorenzopapa5/CalValDataset/issues"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = false
+
+[tool.setuptools.package-data]
+calvaldataset = ["data/*/*.json", "data/sites.csv", "data/.s5cfg.example"]
