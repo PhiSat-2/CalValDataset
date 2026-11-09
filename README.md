@@ -245,3 +245,33 @@ python examples/03_update_datasets.py --run
 ```
 
 Reading and previewing work without credentials. Actual downloads and live updates require the Insula credentials configured in `.s5cfg`. The examples use the main modules directly and are intended as executable usage guides rather than an automated test suite.
+
+## Contributing
+
+Contributions are welcome, including suggestions for new calibration and validation sites. Please:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Add tests and documentation updates where relevant, and keep the runnable examples consistent with any interface changes.
+4. Open a pull request with a clear description of the proposed change and its validation.
+
+To propose a new released site, include its name, country, unique location code, latitude/longitude in EPSG:4326, relevant categories (`geometry`, `image_quality`, `radiometry`) and a short explanation of its calibration/validation value. Add the row to the released `sites.csv` (under `src/calvaldataset/data/` in the package branch). Include product identifiers or verified crop information when available; leave unanalysed crops empty rather than inventing coordinates.
+
+For sites intended only for your own workflow, use the separate personal-site CSV described above instead of changing the released list.
+
+For bugs, questions and new site suggestions, use:
+
+- Issues: [CalValDataset issues](https://github.com/lorenzopapa5/CalValDataset/issues).
+
+## Citation
+
+Citation details will be provided in a future release. The following entry is a placeholder:
+
+```bibtex
+@misc{VHRODA2026,
+}
+```
+
+## License
+
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
