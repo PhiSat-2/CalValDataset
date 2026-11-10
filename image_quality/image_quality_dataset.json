@@ -546,6 +546,105 @@
         "acquisition_date": "2026-06-29",
         "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000006022_20260629035426_20260629035430_A4A05DC7.zip"
       }
+    },
+    {
+      "category": "image_quality",
+      "location": "KFCS",
+      "session": "Session1",
+      "directory": "image_quality/KFCS/Session1",
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000001536_20241219073119_20241219073125_927F8A91",
+        "site": "King Fahd Causeway",
+        "country": "Saudi Arabia/Bahrain",
+        "latitude": 26.18,
+        "longitude": 50.34,
+        "product_name": "PHISAT-2_L1_000001536_20241219073119_20241219073125_927F8A91.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-12-19T07:31:19Z",
+        "acquisition_end": "2024-12-19T07:31:25Z",
+        "acquisition_date": "2024-12-19",
+        "product_id": "4a526fca-c1cc-5fa6-9cae-8c6844d45186",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001536_20241219073119_20241219073125_927F8A91.zip"
+      },
+      "bands": {
+        "b_0": "image_quality/KFCS/Session1/bands/b_0.tiff",
+        "b_1": "image_quality/KFCS/Session1/bands/b_1.tiff",
+        "b_2": "image_quality/KFCS/Session1/bands/b_2.tiff",
+        "b_3": "image_quality/KFCS/Session1/bands/b_3.tiff",
+        "b_4": "image_quality/KFCS/Session1/bands/b_4.tiff",
+        "b_5": "image_quality/KFCS/Session1/bands/b_5.tiff",
+        "b_6": "image_quality/KFCS/Session1/bands/b_6.tiff",
+        "b_7": "image_quality/KFCS/Session1/bands/b_7.tiff"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "SMBR",
+      "session": "Session1",
+      "directory": "image_quality/SMBR/Session1",
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000001462_20241105191012_20241105191018_341D6129",
+        "site": "San Mateo Bridge",
+        "country": "USA",
+        "latitude": 37.6,
+        "longitude": -122.21,
+        "product_name": "PHISAT-2_L1_000001462_20241105191012_20241105191018_341D6129.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-11-05T19:10:12Z",
+        "acquisition_end": "2024-11-05T19:10:18Z",
+        "acquisition_date": "2024-11-05",
+        "product_id": "9c450527-07d8-5e98-ba9d-67dbe82786f0",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001462_20241105191012_20241105191018_341D6129.zip"
+      },
+      "bands": {
+        "b_0": "image_quality/SMBR/Session1/bands/b_0.tiff",
+        "b_1": "image_quality/SMBR/Session1/bands/b_1.tiff",
+        "b_2": "image_quality/SMBR/Session1/bands/b_2.tiff",
+        "b_3": "image_quality/SMBR/Session1/bands/b_3.tiff",
+        "b_4": "image_quality/SMBR/Session1/bands/b_4.tiff",
+        "b_5": "image_quality/SMBR/Session1/bands/b_5.tiff",
+        "b_6": "image_quality/SMBR/Session1/bands/b_6.tiff",
+        "b_7": "image_quality/SMBR/Session1/bands/b_7.tiff"
+      }
+    },
+    {
+      "category": "image_quality",
+      "location": "SMBR",
+      "session": "Session2",
+      "directory": "image_quality/SMBR/Session2",
+      "bbox": [],
+      "metadata": {
+        "payload": "PSat2",
+        "resolution": 4.75,
+        "session_id": "PHISAT-2_L1_000001496_20241121191007_20241121191013_D83D6933",
+        "site": "San Mateo Bridge",
+        "country": "USA",
+        "latitude": 37.6,
+        "longitude": -122.21,
+        "product_name": "PHISAT-2_L1_000001496_20241121191007_20241121191013_D83D6933.zip",
+        "product_type": "L1",
+        "acquisition_start": "2024-11-21T19:10:07Z",
+        "acquisition_end": "2024-11-21T19:10:13Z",
+        "acquisition_date": "2024-11-21",
+        "product_id": "3d58997e-1416-575e-81aa-950faf078c17",
+        "catalogue_url": "eopaas://refData/8/PHISAT-2_L1_000001496_20241121191007_20241121191013_D83D6933.zip"
+      },
+      "bands": {
+        "b_0": "image_quality/SMBR/Session2/bands/b_0.tiff",
+        "b_1": "image_quality/SMBR/Session2/bands/b_1.tiff",
+        "b_2": "image_quality/SMBR/Session2/bands/b_2.tiff",
+        "b_3": "image_quality/SMBR/Session2/bands/b_3.tiff",
+        "b_4": "image_quality/SMBR/Session2/bands/b_4.tiff",
+        "b_5": "image_quality/SMBR/Session2/bands/b_5.tiff",
+        "b_6": "image_quality/SMBR/Session2/bands/b_6.tiff",
+        "b_7": "image_quality/SMBR/Session2/bands/b_7.tiff"
+      }
     }
   ]
 }

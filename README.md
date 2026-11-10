@@ -29,25 +29,25 @@ This repository provides PhiSat-2 Level-1 **products' references and associated 
 
 Each category directory initially contains only its JSON catalogue. Site/session directories are created when products are downloaded. A cloned copy works independently of the previous dataset and migration scripts.
 
-Catalogue snapshot after the live Insula check on 9 November 2026:
+Catalogue snapshot after the live Insula check on 10 November 2026:
 
 | Category | Site/product entries | Entries with existing crops |
 |---|---:|---:|
 | geometry | 19 | 5 |
-| image_quality | 16 | 2 |
+| image_quality | 19 | 2 |
 | radiometry | 65 | 9 |
-| Total | 100 | 16 |
+| Total | 103 | 16 |
 
-**Site/product entries** counts catalogue records: each is a category/site/product association. A product assigned to two categories contributes one entry in each, so the 100 entries represent **84 unique products**, not 100 separate acquisitions.
+**Site/product entries** counts catalogue records: each is a category/site/product association. A product assigned to two categories contributes one entry in each, so the 103 entries represent **87 unique products**, not 103 separate acquisitions.
 
-**Entries with existing crops** counts the subset of those records with at least one saved pixel ROI in `bbox` (`x_min`, `y_min`, `x_max`, `y_max` and a label). These are analysis regions inside the original image, not geographic search footprints or pre-cropped images stored in the repo. `bbox: []` means no ROI has been defined yet; the product and all eight bands remain available. The 16 crop-bearing entries are already included in the 100 total entries, not added to them. The same acquisition may have crop entries in more than one category.
+**Entries with existing crops** counts the subset of those records with at least one saved pixel ROI in `bbox` (`x_min`, `y_min`, `x_max`, `y_max` and a label). These are analysis regions inside the original image, not geographic search footprints or pre-cropped images stored in the repo. `bbox: []` means no ROI has been defined yet; the product and all eight bands remain available. The 16 crop-bearing entries are already included in the 103 total entries, not added to them. The same acquisition may have crop entries in more than one category.
 
 
-The catalogues contain **84 unique products**. The 16 Baotou products appear in both image_quality and radiometry. The latest check added two Libya-1 acquisitions. Jolanda di Savoia and Lonzee remain in the site list but had no matching products at that check.
+The catalogues contain **87 unique products**. The 16 Baotou products appear in both image_quality and radiometry. The latest check added one King Fahd Causeway and two San Mateo Bridge acquisitions. Jolanda di Savoia, Lonzee, Haiwan Bridge and Lake Pontchartrain Causeway had no matching products at that check.
 
 ## Available products by site
 
-Availability at the live Insula check on **9 November 2026**, as recorded in the JSON catalogues. Each product is counted once per site, including products assigned to multiple categories. Sites with no matching products are included with a count of zero.
+Availability at the live Insula check on **10 November 2026**, as recorded in the JSON catalogues. Each product is counted once per site, including products assigned to multiple categories. Sites with no matching products are included with a count of zero.
 
 | Site | Code | Country | Categories | Available L1 products |
 |---|---|---|---|---:|
@@ -68,7 +68,13 @@ Availability at the live Insula check on **9 November 2026**, as recorded in the
 | Grosseto | GROS | Italy | geometry | 1 |
 | Pueblo Range | PRING | USA | geometry | 6 |
 | Sioux Falls Range | SFRG | USA | geometry | 8 |
-| **Total unique products across the dataset** | | | | **84** |
+| King Fahd Causeway | KFCS | Saudi Arabia/Bahrain | image_quality | 1 |
+| San Mateo Bridge | SMBR | USA | image_quality | 2 |
+| Haiwan Bridge | HWBR | China | image_quality | 0 |
+| Lake Pontchartrain Causeway | LPCW | USA | image_quality | 0 |
+| **Total unique products across the dataset** | | | | **87** |
+
+All 21 released sites were checked on Insula on 10 November 2026 without search errors. The four bridge sites are assigned to `image_quality`: King Fahd Causeway has one product, San Mateo Bridge has two, and Haiwan Bridge and Lake Pontchartrain Causeway have none.
 
 Run `python update_datasets.py` to check for newer acquisitions; this table documents the dated snapshot above.
 
@@ -245,6 +251,7 @@ python examples/03_update_datasets.py --run
 ```
 
 Reading and previewing work without credentials. Actual downloads and live updates require the Insula credentials configured in `.s5cfg`. The examples use the main modules directly and are intended as executable usage guides rather than an automated test suite.
+
 
 ## Contributing
 
