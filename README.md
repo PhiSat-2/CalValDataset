@@ -199,16 +199,16 @@ An unsuccessful search is distinguished from a verified zero-result search. Exis
 | Category | Site/product entries | Entries with existing crops |
 |---|---:|---:|
 | geometry | 19 | 5 |
-| image_quality | 16 | 2 |
+| image_quality | 19 | 2 |
 | radiometry | 65 | 9 |
-| Total | 100 | 16 |
+| Total | 103 | 16 |
 
-**Site/product entries** counts catalogue records: each is a category/site/product association. A product assigned to two categories contributes one entry in each, so the 100 entries represent **84 unique products**, not 100 separate acquisitions.
+**Site/product entries** counts catalogue records: each is a category/site/product association. A product assigned to two categories contributes one entry in each, so the 103 entries represent **87 unique products**, not 103 separate acquisitions.
 
-**Entries with existing crops** counts the subset of those records with at least one saved pixel ROI in `bbox` (`x_min`, `y_min`, `x_max`, `y_max` and a label). These are analysis regions inside the original image, not geographic search footprints or pre-cropped images stored in the repo. `bbox: []` means no ROI has been defined yet; the product and all eight bands remain available. The 16 crop-bearing entries are already included in the 100 total entries, not added to them. The same acquisition may have crop entries in more than one category.
+**Entries with existing crops** counts the subset of those records with at least one saved pixel ROI in `bbox` (`x_min`, `y_min`, `x_max`, `y_max` and a label). These are analysis regions inside the original image, not geographic search footprints or pre-cropped images stored in the repo. `bbox: []` means no ROI has been defined yet; the product and all eight bands remain available. The 16 crop-bearing entries are already included in the 103 total entries, not added to them. The same acquisition may have crop entries in more than one category.
 
 
-The package ships **84 unique products** in 100 category entries, based on the Insula check of **9 November 2026**. Baotou products belong to two categories. Local updates can add further products independently of package releases.
+The package ships **87 unique products** in 103 category entries, based on the Insula check of **10 November 2026**. Baotou products belong to two categories. Local updates can add further products independently of package releases.
 
 | Site | Code | Categories | Unique L1 products |
 |---|---|---|---:|
@@ -229,6 +229,12 @@ The package ships **84 unique products** in 100 category entries, based on the I
 | Grosseto | GROS | geometry | 1 |
 | Pueblo Range | PRING | geometry | 6 |
 | Sioux Falls Range | SFRG | geometry | 8 |
+| King Fahd Causeway | KFCS | image_quality | 1 |
+| San Mateo Bridge | SMBR | image_quality | 2 |
+| Haiwan Bridge | HWBR | image_quality | 0 |
+| Lake Pontchartrain Causeway | LPCW | image_quality | 0 |
+
+All 21 released sites were checked on Insula on 10 November 2026 without search errors. The four bridge sites are assigned to `image_quality`: King Fahd Causeway has one product, San Mateo Bridge has two, and Haiwan Bridge and Lake Pontchartrain Causeway have none.
 
 ## Python API and examples
 
@@ -254,6 +260,7 @@ python -m unittest discover -s tests -v
 The wheel and source archive are written to `dist/`. The regression suite covers packaged seed data, writable workspace initialization, CLI selection, credential errors, update idempotence, crop preservation, pagination, download caching and band organization with simulated archives. It does not download satellite imagery. GitHub Actions repeats package checks on Windows and Linux with Python 3.11 and 3.12.
 
 PyPI publication and a merge into `main` are separate release steps. No upload is performed by the build or the CI workflow.
+
 
 ## Contributing
 

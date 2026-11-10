@@ -1,4 +1,4 @@
-﻿"Site","Latitude","Longitude","Country","Location","Categories"
+"Site","Latitude","Longitude","Country","Location","Categories"
 "Railroad Valley Playa","38.497","-115.690","USA","RVUS","radiometry"
 "La Crau","43.56","4.87","France","LCFR","radiometry"
 "Gobabeb","-23.600","15.120","Namibia","GHNA","radiometry"
@@ -16,3 +16,7 @@
 "Grosseto","42.76","11.06","Italy","GROS","geometry"
 "Pueblo Range","38.28","-104.61","USA","PRING","geometry"
 "Sioux Falls Range","43.56","-96.46","USA","SFRG","geometry"
+"King Fahd Causeway","26.18","50.34","Saudi Arabia/Bahrain","KFCS","image_quality"
+"San Mateo Bridge","37.60","-122.21","USA","SMBR","image_quality"
+"Haiwan Bridge","36.15","120.22","China","HWBR","image_quality"
+"Lake Pontchartrain Causeway","30.21","-90.12","USA","LPCW","image_quality"

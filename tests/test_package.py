@@ -74,8 +74,8 @@ class WorkspaceTests(unittest.TestCase):
             root = ensure_workspace(Path(temporary))
             documents = load_catalogues(root)
             entries = [e for doc in documents.values() for e in doc["entries"]]
-            self.assertEqual(len(entries), 100)
-            self.assertEqual(len({e["metadata"]["session_id"] for e in entries}), 84)
+            self.assertEqual(len(entries), 103)
+            self.assertEqual(len({e["metadata"]["session_id"] for e in entries}), 87)
             self.assertEqual(sum(bool(e.get("bbox")) for e in entries), 16)
             self.assertTrue(all(e["bands"] == expected_band_paths(e) and e["metadata"]["resolution"] == 4.75 for e in entries))
             sites_path = root / "sites.csv"
@@ -196,7 +196,7 @@ class PersonalSiteTests(unittest.TestCase):
         self.personal.write_text(self.header + 'Personal,1,1,Example,MY01,radiometry\nMy La Crau,43.5,4.8,France,lcfr,geometry\n', encoding='utf-8')
         before = (self.root / 'sites.csv').read_bytes(), self.personal.read_bytes()
         sites = load_sites(self.root)
-        self.assertEqual(len(sites), 18)
+        self.assertEqual(len(sites), 22)
         custom = next(s for s in sites if s.location == 'LCFR')
         self.assertEqual(custom.name, 'My La Crau')
         self.assertEqual(custom.categories, ('geometry',))
@@ -204,9 +204,9 @@ class PersonalSiteTests(unittest.TestCase):
         self.assertEqual(((self.root / 'sites.csv').read_bytes(), self.personal.read_bytes()), before)
 
     def test_empty_default_and_missing_explicit_files(self):
-        self.assertEqual(len(load_sites(self.root)), 17)
+        self.assertEqual(len(load_sites(self.root)), 21)
         self.personal.write_text(self.header, encoding='utf-8')
-        self.assertEqual(len(load_sites(self.root)), 17)
+        self.assertEqual(len(load_sites(self.root)), 21)
         with self.assertRaises(FileNotFoundError):
             load_sites(self.root, personal_path=self.root / 'missing.csv')
 
@@ -221,8 +221,8 @@ class PersonalSiteTests(unittest.TestCase):
         base.write_text('\n'.join([lines[0], *lines[2:]]) + '\n', encoding='utf-8')
         self.personal.write_text(self.header + 'Personal,1,1,Example,MY01,radiometry\n', encoding='utf-8')
         before = base.read_bytes(), self.personal.read_bytes()
-        self.assertEqual(len(read_site_lists(base)), 17)
-        self.assertEqual(len(load_sites(self.root)), 18)
+        self.assertEqual(len(read_site_lists(base)), 21)
+        self.assertEqual(len(load_sites(self.root)), 22)
         self.assertEqual((base.read_bytes(), self.personal.read_bytes()), before)
 
     def test_cli_update_and_list_personal_site(self):
@@ -295,7 +295,7 @@ class CLITests(unittest.TestCase):
             self.assertEqual(len(report["sites"]), 1)
             self.assertEqual(report["sites"][0]["location"], "LCFR")
             self.assertEqual(self.invoke("update", "--all")[0], 0)
-            self.assertEqual(len(read_json(self.root / "reports/last_update.json")["sites"]), 17)
+            self.assertEqual(len(read_json(self.root / "reports/last_update.json")["sites"]), 21)
 
     def test_global_options_before_and_after_subcommand(self):
         before = make_parser().parse_args(["--data-dir", str(self.root), "list"])
