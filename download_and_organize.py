@@ -10,7 +10,7 @@ from pathlib import Path
 
 from dataset import (
     CATEGORIES, ROOT, discover_bands, entry_directory, expected_band_paths, load_catalogues,
-    product_name, read_json, validate_config, write_json,
+    filter_excluded_products, product_name, read_json, validate_config, write_json,
 )
 
 
@@ -47,6 +47,10 @@ def organize_bands(entry: dict, root: Path) -> None:
 
 
 def download_entries(entries: list[dict], root: Path, searcher, *, unzip: bool = False) -> int:
+    # Enforce exclusions for direct Python callers as well as CLI selections.
+    entries = filter_excluded_products(entries)
+    if not entries:
+        return 0
     root = root.resolve()
     cache = root / "downloads"
     cache.mkdir(parents=True, exist_ok=True)
@@ -101,7 +105,7 @@ def select_entries(documents: dict, *, category: str | None = None,
         raise ValueError(f"Products not found with these filters: {', '.join(sorted(missing))}")
     if not selected:
         raise ValueError("No products match the requested filters")
-    return selected
+    return filter_excluded_products(selected)
 
 
 def main(argv=None) -> int:
@@ -126,7 +130,7 @@ def main(argv=None) -> int:
     try:
         selected = select_entries(documents, category=args.category, location=args.location,
                                   session=args.session, products=args.product)
-    except ValueError as exc:
+    except (ValueError, OSError) as exc:
         parser.error(str(exc))
     for entry in selected:
         print(f"{entry['category']}/{entry['location']}/{entry['session']}: {entry['metadata']['session_id']}")

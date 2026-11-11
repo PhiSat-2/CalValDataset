@@ -1,4 +1,4 @@
-﻿"""Shared metadata helpers for the CalVal JSON catalogues (no imagery dependencies)."""
+"""Shared metadata helpers for the CalVal JSON catalogues (no imagery dependencies)."""
 from __future__ import annotations
 
 import configparser
@@ -30,6 +30,32 @@ def product_name(value: str) -> str:
     if not re.fullmatch(r"PHISAT-2_[A-Za-z0-9_-]+", name):
         raise ValueError(f"Invalid PhiSat-2 product name: {value!r}")
     return name
+
+
+def read_excluded_products(path: Path | None = None) -> set[str]:
+    """Read manually rejected acquisitions; product identity survives session changes."""
+    path = path if path is not None else ROOT / "sites_to_be_removed.csv"
+    with path.open(encoding="utf-8-sig", newline="") as stream:
+        reader = csv.DictReader(stream)
+        if "Product" not in (reader.fieldnames or []):
+            raise ValueError(f"Exclusion CSV requires a Product column: {path}")
+        excluded = set()
+        for number, row in enumerate(reader, 2):
+            try:
+                excluded.add(product_name(row.get("Product") or ""))
+            except ValueError as exc:
+                raise ValueError(f"Invalid exclusion on row {number} in {path}: {exc}") from exc
+    return excluded
+
+
+def filter_excluded_products(entries: list[dict], path: Path | None = None) -> list[dict]:
+    """Reject defective acquisitions in every category before any download or extraction."""
+    excluded = read_excluded_products(path)
+    allowed = [entry for entry in entries
+               if product_name(entry["metadata"]["session_id"]) not in excluded]
+    if len(allowed) != len(entries):
+        print(f"Manual acquisition exclusions: skipped {len(entries) - len(allowed)} category entries")
+    return allowed
 
 
 def load_dataset(category: str, root: Path = ROOT) -> dict:

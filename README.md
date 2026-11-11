@@ -16,6 +16,7 @@ This repository provides PhiSat-2 Level-1 **products' references and associated 
 | [dataset.py](dataset.py) | Shared offline data layer: validates/reads/writes JSON and site CSVs, merges released and personal sites, validates the Insula credential file, and discovers TIFF bands and their standard destinations. |
 | [update_datasets.py](update_datasets.py) | Combines site lists, queries every candidate catalogue page through Phi-Down, verifies exact point-in-footprint coverage and adds/refreshes category entries. Preserves sessions and crops and produces the report; retrieves metadata only. |
 | [download_and_organize.py](download_and_organize.py) | Reads and filters entries by category/site/session/product or selection JSON. Previews by default; with `--download`, resolves and downloads archives through Phi-Down. `--unzip` extracts and organizes eight bands. A shared ZIP cache avoids repeated downloads. |
+| [sites_to_be_removed.csv](sites_to_be_removed.csv) | Manually rejected acquisition identifiers, skipped across all categories before downloads. |
 | [sites.csv](sites.csv) | Released site names, coordinates, countries, stable codes and one or more categories. |
 | [sites.personal.csv.example](sites.personal.csv.example) | Header-only template for a separate user-maintained site CSV, added to the released list. The real `sites.personal.csv` is local and Git-ignored. |
 | [.s5cfg.example](.s5cfg.example) | Placeholder-only credential template. Enter your Insula username/password in a local `.s5cfg` before live searches or downloads. |
@@ -29,52 +30,77 @@ This repository provides PhiSat-2 Level-1 **products' references and associated 
 
 Each category directory initially contains only its JSON catalogue. Site/session directories are created when products are downloaded. A cloned copy works independently of the previous dataset and migration scripts.
 
-Catalogue snapshot after the live Insula check on 10 November 2026:
+## Manually excluded acquisitions
+
+`sites_to_be_removed.csv` records acquisitions manually rejected after visual inspection because of satellite acquisition problems. Despite its historical filename, it excludes **individual products, not entire sites**. The list currently contains **32 products**. Its columns preserve the site name, coordinates, country, location code, category and session for review; the full `Product` identifier is the exclusion key.
+
+The downloader automatically removes these products from every selection before downloading or extracting imagery. This applies to the full dataset, category/site/session filters, explicit `--product` requests, custom `--json` selections, the runnable examples and direct calls to `download_entries`. An excluded acquisition is skipped in **all categories and sites**, even if its session label changes. The command reports how many category entries were skipped. If all selected products are excluded, it exits successfully without contacting Insula.
+
+The exclusion list is always loaded from the code directory beside `dataset.py`, including when `--dataset-root` points to another output directory. A missing or malformed exclusion file stops the operation rather than silently allowing rejected products. To reject another acquisition, add a row with its exact full product name in `Product` (with or without `.zip`) and the associated site/session information. To reinstate an acquisition after review, remove its row. Keep the CSV header even when there are no exclusions.
+
+Catalogue JSON files retain the original product references and session numbering. Updates from Insula can refresh these references, but the downloader continues to exclude rejected products while they remain in the CSV. Existing downloaded files are not deleted by this filter. All availability tables below exclude manually rejected acquisitions and show only products currently eligible for download.
+
+For the current snapshot, applying the 32 rejected product identifiers leaves **89 unique products across 105 category entries** eligible for download. The exclusions remove 36 category entries because four rejected Baotou products also occur in radiometry.
+
+Downloadable samples from the live Insula catalogue snapshot of 10 November 2026, after applying the manual exclusions reviewed on 11 November 2026:
 
 | Category | Site/product entries | Entries with existing crops |
 |---|---:|---:|
-| geometry | 19 | 5 |
-| image_quality | 19 | 2 |
-| radiometry | 65 | 9 |
-| Total | 103 | 16 |
+| geometry | 21 | 5 |
+| image_quality | 18 | 2 |
+| radiometry | 66 | 9 |
+| Total | 105 | 16 |
 
-**Site/product entries** counts catalogue records: each is a category/site/product association. A product assigned to two categories contributes one entry in each, so the 103 entries represent **87 unique products**, not 103 separate acquisitions.
+The usable selection contains **89 unique products**. The 12 retained Baotou products belong to both image_quality and radiometry; the four Genoa products belong to both geometry and image_quality, accounting for 16 additional category entries. The six cross-talk candidate sites are assigned to radiometry; eight products remain eligible across CT01, CT02 and CT06. CT03, CT04 and CT05 currently have no retained products.
 
-**Entries with existing crops** counts the subset of those records with at least one saved pixel ROI in `bbox` (`x_min`, `y_min`, `x_max`, `y_max` and a label). These are analysis regions inside the original image, not geographic search footprints or pre-cropped images stored in the repo. `bbox: []` means no ROI has been defined yet; the product and all eight bands remain available. The 16 crop-bearing entries are already included in the 103 total entries, not added to them. The same acquisition may have crop entries in more than one category.
+**Site/product entries** counts retained category/site/product associations after manual exclusions. Products assigned to two categories contribute one entry in each: 105 entries represent **89 unique acquisitions**.
 
-
-The catalogues contain **87 unique products**. The 16 Baotou products appear in both image_quality and radiometry. The latest check added one King Fahd Causeway and two San Mateo Bridge acquisitions. Jolanda di Savoia, Lonzee, Haiwan Bridge and Lake Pontchartrain Causeway had no matching products at that check.
+**Entries with existing crops** counts retained entries with at least one saved pixel ROI in `bbox` (`x_min`, `y_min`, `x_max`, `y_max` and a label). These pixel regions are not geographic search footprints or pre-cropped files. `bbox: []` means no ROI has been defined; all eight bands remain available for eligible products. The 16 crop-bearing entries are included in the 105 total entries.
 
 ## Available products by site
 
-Availability at the live Insula check on **10 November 2026**, as recorded in the JSON catalogues. Each product is counted once per site, including products assigned to multiple categories. Sites with no matching products are included with a count of zero.
+Products eligible for download from the live Insula snapshot of **10 November 2026**, after the manual exclusions reviewed on **11 November 2026**. Each retained product is counted once per site, including products assigned to multiple categories. Zero means no retained products in this snapshot, including sites whose acquisitions were all rejected. Sites not yet queried are marked separately.
 
 | Site | Code | Country | Categories | Available L1 products |
 |---|---|---|---|---:|
 | Railroad Valley Playa | RVUS | USA | radiometry | 3 |
 | La Crau | LCFR | France | radiometry | 5 |
 | Gobabeb | GHNA | Namibia | radiometry | 11 |
-| Baotou | BAOT | China | image_quality, radiometry | 16 |
+| Baotou | BAOT | China | image_quality, radiometry | 12 |
 | Jarvselja | JAES | Estonia | geometry | 2 |
 | Jolanda di Savoia | JSIT | Italy | radiometry | 0 |
 | Lonzee | LOBE | Belgium | radiometry | 0 |
 | Wytham Woods | WWUK | UK | geometry | 1 |
-| Princess Elisabeth | PEAN | Antarctica | radiometry | 5 |
+| Princess Elisabeth | PEAN | Antarctica | radiometry | 3 |
 | Libya-4 | LYB4 | Libya | radiometry | 5 |
 | Libya-1 | LYB1 | Libya | radiometry | 6 |
 | Algeria-3 | ALG3 | Algeria | radiometry | 5 |
-| Shadnagar | SHAD | India | radiometry | 9 |
+| Shadnagar | SHAD | India | radiometry | 8 |
 | Piedmont | PIED | Italy | geometry | 1 |
 | Grosseto | GROS | Italy | geometry | 1 |
 | Pueblo Range | PRING | USA | geometry | 6 |
-| Sioux Falls Range | SFRG | USA | geometry | 8 |
+| Sioux Falls Range | SFRG | USA | geometry | 6 |
 | King Fahd Causeway | KFCS | Saudi Arabia/Bahrain | image_quality | 1 |
-| San Mateo Bridge | SMBR | USA | image_quality | 2 |
+| San Mateo Bridge | SMBR | USA | image_quality | 1 |
 | Haiwan Bridge | HWBR | China | image_quality | 0 |
 | Lake Pontchartrain Causeway | LPCW | USA | image_quality | 0 |
-| **Total unique products across the dataset** | | | | **87** |
+| Genoa | GENO | Italy | geometry, image_quality | 4 |
+| Atlantic Open Ocean | CT01 | International waters | radiometry | 1 |
+| South Pacific Open Ocean | CT02 | International waters | radiometry | 4 |
+| Amazon Rainforest | CT03 | Brazil | radiometry | 0 |
+| Central Borneo Rainforest | CT04 | Indonesia | radiometry | 0 |
+| Greenland Inland Ice | CT05 | Greenland | radiometry | 0 |
+| Antarctica Dome C Region | CT06 | Antarctica | radiometry | 3 |
+| Honolulu | URB01 | USA | radiometry | Not catalogued |
+| Indian Ocean Open Water | CT07 | International waters | radiometry | Not catalogued |
+| **Total unique products eligible for download** | | | | **89** |
 
-All 21 released sites were checked on Insula on 10 November 2026 without search errors. The four bridge sites are assigned to `image_quality`: King Fahd Causeway has one product, San Mateo Bridge has two, and Haiwan Bridge and Lake Pontchartrain Causeway have none.
+The 28 snapshot sites were checked on Insula on 10 November 2026 without search errors. After exclusions, Genoa contributes four products and the six cross-talk sites contribute eight products. Eligibility means the product is present in the snapshot and is not on the manual rejection list; suitability for a specific analysis still depends on the application.
+
+The released site list now contains 30 sites. Honolulu (URB01) and Indian Ocean Open Water (CT07) were added as radiometry reference points on 11 November 2026; their acquisitions have not been added to this catalogue snapshot. The site CSV stores coordinates and categories, so its updater can return both daytime and nighttime acquisitions. Adding these points does not apply a nighttime-only filter. The inspected Honolulu candidate remains unvalidated as an urban-night target because its TIFF geolocation differs from the catalogue footprint.
+
+
+
 
 Run `python update_datasets.py` to check for newer acquisitions; this table documents the dated snapshot above.
 
