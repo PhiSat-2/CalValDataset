@@ -91,13 +91,11 @@ Products eligible for download from the live Insula snapshot of **10 November 20
 | Central Borneo Rainforest | CT04 | Indonesia | radiometry | 0 |
 | Greenland Inland Ice | CT05 | Greenland | radiometry | 0 |
 | Antarctica Dome C Region | CT06 | Antarctica | radiometry | 3 |
-| Honolulu | URB01 | USA | radiometry | Not catalogued |
-| Indian Ocean Open Water | CT07 | International waters | radiometry | Not catalogued |
 | **Total unique products eligible for download** | | | | **89** |
 
 The 28 snapshot sites were checked on Insula on 10 November 2026 without search errors. After exclusions, Genoa contributes four products and the six cross-talk sites contribute eight products. Eligibility means the product is present in the snapshot and is not on the manual rejection list; suitability for a specific analysis still depends on the application.
 
-The released site list now contains 30 sites. Honolulu (URB01) and Indian Ocean Open Water (CT07) were added as radiometry reference points on 11 November 2026; their acquisitions have not been added to this catalogue snapshot. The site CSV stores coordinates and categories, so its updater can return both daytime and nighttime acquisitions. Adding these points does not apply a nighttime-only filter. The inspected Honolulu candidate remains unvalidated as an urban-night target because its TIFF geolocation differs from the catalogue footprint.
+The released site list contains 28 sites. The site CSV stores coordinates and categories, so its updater can return both daytime and nighttime acquisitions; no nighttime-only filter is applied.
 
 
 
