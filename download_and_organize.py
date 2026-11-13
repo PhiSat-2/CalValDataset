@@ -63,7 +63,8 @@ def download_entries(entries: list[dict], root: Path, searcher, *, unzip: bool =
                 # Resolve through the platform-files API. Catalogue IDs need not be
                 # downloadable platform-file IDs, so never pass a CSV UUID blindly.
                 product = searcher.resolve_product(name)
-                if product_name(str(product["Name"])) + ".zip" != name:
+                returned_name = str(product["Name"]).replace("\\", "/").rsplit("/", 1)[-1]
+                if product_name(returned_name) + ".zip" != name:
                     raise ValueError(f"Insula returned a different product for {name}")
                 downloaded = Path(searcher.download_product(
                     product_id=product["Id"], output_dir=str(cache),
