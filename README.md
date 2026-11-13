@@ -1,8 +1,8 @@
-![CalValDataset PhiSat-2 Toolkit Dashboard](assets/phisat2-toolkit-dashboard.png)
+![CalValDataset Φsat-2 Toolkit Dashboard](assets/phisat2-toolkit-dashboard.png)
 
-# CalValDataset — PhiSat-2 catalogues
+# CalValDataset — Φsat-2 catalogues
 
-This repository provides PhiSat-2 Level-1 **products' references and associated metadata**, organized into **geometry**, **image_quality** and **radiometry**. A reference identifies a product on Insula by its name, catalogue ID and acquisition dates. Associated metadata includes site coordinates, expected local band paths and any curated pixel regions of interest. The repository does not contain the satellite imagery itself.
+This repository provides Φsat-2 Level-1 **products' references and associated metadata**, organized into **geometry**, **image_quality** and **radiometry**. A reference identifies a product on Insula by its name, catalogue ID and acquisition dates. Associated metadata includes site coordinates, expected local band paths and any curated pixel regions of interest. The repository does not contain the satellite imagery itself.
 
 **Phi-Down** is the Python client used to authenticate to Insula, search its catalogue for acquisitions covering the configured site coordinates, and resolve and download product archives. Updating the local catalogues means adding newly discovered references and refreshing metadata in JSON files. It does not download imagery, process pixels or publish changes back to Insula; imagery is downloaded separately on request.
 
@@ -251,7 +251,7 @@ Every product has one `bands` mapping with keys `b_0` through `b_7`, whether or 
 
 After extraction, the downloader identifies the original TIFFs and creates the standard band files while preserving the extracted package and original ZIP. It uses hard links where supported and copies otherwise. Missing or ambiguous bands produce an explicit error. Standardization changes local filenames only, preserving raster contents and crop coordinates.
 
-The project stores crop definitions and does not perform image cropping or image-quality analysis. Every product has a numeric `metadata.resolution` value of `4.75`, expressed in metres, matching the nominal PhiSat-2 resolution used by this dataset. New acquisitions receive the same value. Original TIFF filenames and raster dimensions are not guessed. Updates never transfer a crop to another acquisition. Historical information is retained in the existing product metadata; numeric latitude/longitude values refer to the current search coordinates.
+The project stores crop definitions and does not perform image cropping or image-quality analysis. Every product has a numeric `metadata.resolution` value of `4.75`, expressed in metres, matching the nominal Φsat-2 resolution used by this dataset. New acquisitions receive the same value. Original TIFF filenames and raster dimensions are not guessed. Updates never transfer a crop to another acquisition. Historical information is retained in the existing product metadata; numeric latitude/longitude values refer to the current search coordinates.
 
 ## Runnable examples
 
